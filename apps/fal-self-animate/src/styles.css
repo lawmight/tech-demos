@@ -412,9 +412,9 @@ code {
 .player {
   position: relative;
   aspect-ratio: 1;
-  max-height: 640px;
-  margin: 0 auto;
   width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   background:
@@ -431,6 +431,8 @@ code {
 }
 
 .player video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -440,9 +442,8 @@ code {
 }
 
 .placeholder {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 0;
   display: grid;
   place-items: center;
 }
@@ -475,8 +476,11 @@ code {
 .error {
   position: absolute;
   bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
   padding: 8px 14px;
+  max-width: calc(100% - 36px);
   border-radius: 999px;
   background: rgba(11, 16, 32, 0.85);
   border: 1px solid var(--line);

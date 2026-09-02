@@ -8,7 +8,8 @@
  */
 import { join } from "node:path";
 
-const GRID = 32;
+const GRID = 36; // 32x32 sprite area + 2px padding on each side
+const PAD = 2;
 const SCALE = 16;
 const SIZE = GRID * SCALE;
 const FPS = 12;
@@ -45,7 +46,12 @@ const C = {
 
 class Canvas {
   buf = new Uint8Array(SIZE * SIZE * 3);
+  /** offset applied to every draw call; the robot is drawn in a padded 32x32 frame */
+  ox = 0;
+  oy = 0;
   px(gx: number, gy: number, c: RGB) {
+    gx += this.ox;
+    gy += this.oy;
     if (gx < 0 || gy < 0 || gx >= GRID || gy >= GRID) return;
     for (let y = gy * SCALE; y < (gy + 1) * SCALE; y++) {
       let i = (y * SIZE + gx * SCALE) * 3;
@@ -75,16 +81,18 @@ class Canvas {
 type Preset = "walk" | "wave" | "idle";
 
 function drawBackground(cv: Canvas) {
-  cv.rect(0, 0, GRID, 30, C.bgTop);
-  cv.rect(0, 30, GRID, 2, C.bgBottom);
-  cv.rect(0, 30, GRID, 1, C.floor);
+  const floorY = 30 + PAD;
+  cv.rect(0, 0, GRID, floorY, C.bgTop);
+  cv.rect(0, floorY, GRID, GRID - floorY, C.bgBottom);
+  cv.rect(0, floorY, GRID, 1, C.floor);
   for (const [sx, sy] of [
-    [3, 4],
-    [27, 6],
-    [6, 14],
-    [29, 18],
-    [24, 2],
-    [2, 24],
+    [3, 5],
+    [31, 7],
+    [6, 16],
+    [33, 20],
+    [26, 2],
+    [2, 27],
+    [18, 1],
   ])
     cv.px(sx, sy, C.star);
 }
@@ -210,6 +218,8 @@ function drawRobot(cv: Canvas, preset: Preset, t: number) {
 function renderFrame(preset: Preset, t: number): Uint8Array {
   const cv = new Canvas();
   drawBackground(cv);
+  cv.ox = PAD;
+  cv.oy = PAD;
   drawRobot(cv, preset, t);
   return cv.buf;
 }
