@@ -1,0 +1,21 @@
+{
+  "proposed": [
+    {
+      "id": "2093780571638149523",
+      "title": "Sodium WebMCP",
+      "url": "https://x.com/saviomartin/status/2093780571638149523",
+      "date": "2026-09-01",
+      "status": "skipped",
+      "reason": "overlaps tinkabot"
+    },
+    {
+      "id": "2092375056089563604",
+      "title": "fal self-animate",
+      "url": "https://x.com/shubgaur/status/2092375056089563604",
+      "date": "2026-09-01",
+      "status": "approved",
+      "slug": "fal-self-animate"
+    }
+  ],
+  "built": []
+}
