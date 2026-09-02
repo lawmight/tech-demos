@@ -15,6 +15,14 @@
       "date": "2026-09-01",
       "status": "approved",
       "slug": "fal-self-animate"
+    },
+    {
+      "id": "2094515104670715940",
+      "title": "Hermes Agent Pantheon (v0.21.0)",
+      "url": "https://x.com/NousResearch/status/2094515104670715940",
+      "date": "2026-09-02",
+      "status": "proposed",
+      "slug": "hermes-pantheon-todos"
     }
   ],
   "built": []
