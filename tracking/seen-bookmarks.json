@@ -21,8 +21,17 @@
       "title": "Hermes Agent Pantheon (v0.21.0)",
       "url": "https://x.com/NousResearch/status/2094515104670715940",
       "date": "2026-09-02",
+      "status": "skipped",
+      "slug": "hermes-pantheon-todos",
+      "reason": "Tom: no demo; village steal instead"
+    },
+    {
+      "id": "2095260582064672966",
+      "title": "Daytona sandboxes for Cursor Self-Hosted Machines",
+      "url": "https://x.com/daytonaio/status/2095260582064672966",
+      "date": "2026-09-03",
       "status": "proposed",
-      "slug": "hermes-pantheon-todos"
+      "slug": "daytona-sandbox-lab"
     }
   ],
   "built": []
