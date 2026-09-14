@@ -32,6 +32,14 @@
       "date": "2026-09-03",
       "status": "proposed",
       "slug": "daytona-sandbox-lab"
+    },
+    {
+      "id": "2097930608790167907",
+      "title": "DeepSeek-V4.1-Flash",
+      "url": "https://x.com/deepseek_ai/status/2097930608790167907",
+      "date": "2026-09-14",
+      "status": "proposed",
+      "slug": "deepseek-flash-vision"
     }
   ],
   "built": []
