@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bend LAWS + PROOF playground</title>
+    <link rel="stylesheet" href="/app.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Bend LAWS + PROOF playground</h1>
+      <p class="subtitle">
+        Sticky demo for Bend beta: declare laws humans own, prove them before commit,
+        and watch independent recursive calls schedule in parallel.
+      </p>
+      <div class="badge-row">
+        <span id="bend-status" class="badge warn">checking bend…</span>
+        <span class="badge">bend ≥ 2.0.x</span>
+        <span class="badge">apps/bend-sticky</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid">
+        <article class="card">
+          <h2>LAWS.bend — human-owned rules</h2>
+          <p>
+            Laws are precise specs, not prompts. <code>LAWS.bend</code> imports your code and
+            states what must always hold. Agents should not edit this file without you.
+          </p>
+          <ul>
+            <li><code>add_zero</code> — adding zero is identity on <code>Nat</code></li>
+            <li><code>pow2_base</code> — <code>pow2(0) == 1</code></li>
+          </ul>
+          <div class="agents">
+            When using Bend:<br />
+            • run <code>bend guide</code> to learn it<br />
+            • use <code>LAWS.bend</code> to keep important rules<br />
+            • run <code>bend PROOF.bend</code> before committing<br />
+            • parallelize the code whenever possible
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>PROOF.bend — the commit gate</h2>
+          <p>
+            <code>PROOF.bend</code> imports <code>LAWS.bend</code> and discharges each law with a
+            matching <code>def Laws.&lt;name&gt;</code>. When every proof checks, Bend prints
+            <strong>All terms check.</strong>
+          </p>
+          <div class="actions">
+            <button class="primary" id="run-proof">Run bend PROOF.bend</button>
+          </div>
+          <pre id="proof-output" class="ok">Click “Run bend PROOF.bend”</pre>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Automatic parallelism — pow2</h2>
+        <p>
+          Bend has no threads and no locks. A <em>parallel call</em> like
+          <code>a b = pow2(p) pow2(p)</code> tells the runtime both recursive branches are
+          independent; the scheduler spreads them across cores (or GPU with <code>!</code>).
+        </p>
+        <div class="actions">
+          <button class="secondary" id="run-parallel">Run bend parallel.bend</button>
+        </div>
+        <pre id="parallel-output">Click “Run bend parallel.bend”</pre>
+      </section>
+
+      <section class="card">
+        <h2>Source viewer</h2>
+        <div class="tabs" id="file-tabs"></div>
+        <pre id="source-view">loading…</pre>
+      </section>
+    </main>
+
+    <footer>
+      Install: <code>curl -fsSL https://bend-lang.com/install.sh | sh</code> ·
+      CLI proof: <code>bun run check:bend</code> ·
+      <a href="https://bend-lang.com/" target="_blank" rel="noreferrer">bend-lang.com</a>
+    </footer>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
