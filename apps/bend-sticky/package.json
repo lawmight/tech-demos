@@ -1,0 +1,12 @@
+{
+  "name": "bend-sticky",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run src/server.ts",
+    "proof": "bend bend/PROOF.bend",
+    "parallel": "bend bend/parallel.bend",
+    "check:bend": "bash scripts/proof.sh"
+  }
+}
