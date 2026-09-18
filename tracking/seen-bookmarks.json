@@ -40,6 +40,14 @@
       "date": "2026-09-14",
       "status": "proposed",
       "slug": "deepseek-flash-vision"
+    },
+    {
+      "id": "2100681226143092875",
+      "title": "Bend 2",
+      "url": "https://x.com/VictorTaelin/status/2100681226143092875",
+      "date": "2026-09-18",
+      "status": "proposed",
+      "slug": "bend2-sticky"
     }
   ],
   "built": []
