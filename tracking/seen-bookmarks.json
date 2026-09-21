@@ -48,6 +48,18 @@
       "date": "2026-09-18",
       "status": "proposed",
       "slug": "bend2-sticky"
+    },
+    {
+      "id": "2101544156757950697",
+      "title": "Jev (TypeSafe AI)",
+      "url": "https://x.com/rronak_/status/2101544156757950697",
+      "date": "2026-09-21",
+      "status": "proposed",
+      "slug": "jev-decision-lab",
+      "related_ids": [
+        "2101319684578795577",
+        "2101364695596765613"
+      ]
     }
   ],
   "built": []
