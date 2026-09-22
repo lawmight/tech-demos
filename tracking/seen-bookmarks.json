@@ -66,8 +66,9 @@
       "title": "Grok 4.7",
       "url": "https://x.com/SpaceXAI/status/2102069815225586149",
       "date": "2026-09-22",
-      "status": "proposed",
-      "slug": "grok-47-constraint-lab"
+      "status": "skipped",
+      "slug": "grok-47-constraint-lab",
+      "reason": "Tom: Skip"
     }
   ],
   "built": []
