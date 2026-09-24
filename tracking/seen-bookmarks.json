@@ -54,12 +54,13 @@
       "title": "Jev (TypeSafe AI)",
       "url": "https://x.com/rronak_/status/2101544156757950697",
       "date": "2026-09-21",
-      "status": "proposed",
+      "status": "skipped",
       "slug": "jev-decision-lab",
       "related_ids": [
         "2101319684578795577",
         "2101364695596765613"
-      ]
+      ],
+      "reason": "Tom: none skip (2026-09-24)"
     },
     {
       "id": "2102069815225586149",
@@ -75,8 +76,9 @@
       "title": "Claude Opus 5.5",
       "url": "https://x.com/claudeai/status/2102435511222890900",
       "date": "2026-09-23",
-      "status": "proposed",
-      "slug": "opus-55-bakeoff"
+      "status": "skipped",
+      "slug": "opus-55-bakeoff",
+      "reason": "Tom: none skip (2026-09-24)"
     }
   ],
   "built": []
