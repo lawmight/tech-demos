@@ -47,15 +47,15 @@ Optional (not required): an "LLM rewrite" button enabled only when an env key (e
 
 ## DONE-LOOKS-LIKE
 
-- [ ] `cd apps/harness-token-lab && bun install && bun run dev` starts the app with no env vars and no API key; works offline.
-- [ ] On first load the sample system prompt + tool JSON are preloaded and all four outputs render without user input:
+- [x] `cd apps/harness-token-lab && bun install && bun run dev` starts the app with no env vars and no API key; works offline.
+- [x] On first load the sample system prompt + tool JSON are preloaded and all four outputs render without user input:
   - per-section and per-tool token counts (real tokenizer, client-side);
   - offload suggestions, each with a tokens-saved number;
   - cache-layout checklist with stable-prefix vs volatile classification and recommended order (flags at least one volatile item in the sample's prefix);
   - cheaper rewrite with before/after token counts and a savings % (sample shows a non-trivial saving, e.g. ≥ 20% of static tokens).
-- [ ] Editing the prompt/tools recomputes results; invalid JSON shows a clear inline error instead of crashing.
-- [ ] `bun run typecheck` (tsc --noEmit) and `bun run build` pass; `bun test` passes with tests covering the tokenizer wrapper, volatile-content detection, offload ranking, and the rewriter.
-- [ ] `apps/harness-token-lab/README.md` with run steps, what each panel does, the heuristics used, and credit + links to Eric Zakariasson's post (https://x.com/ericzakariasson/status/2102853511637774551) and Cursor's post (https://x.com/cursor_ai/status/2102786814633464159).
-- [ ] This `PLAN.md` committed as `apps/harness-token-lab/PLAN.md` as the first commit.
-- [ ] Exactly one PR against `main`, titled like `feat(harness-token-lab): offline token + cache-layout lab for agent harness prompts`, whose body embeds at least one screenshot of the main view AND a short screen-recording video of the core loop (load sample → view breakdown → toggle suggestions → see rewrite savings). Media under `apps/harness-token-lab/artifacts/` and/or attached the Cursor cloud-agent way.
-- [ ] `git diff --name-only main...HEAD` lists only paths under `apps/harness-token-lab/`. No other files in the repo change (no root, no other apps, no tracking/, no lockfiles outside the app).
+- [x] Editing the prompt/tools recomputes results; invalid JSON shows a clear inline error instead of crashing.
+- [x] `bun run typecheck` (tsc --noEmit) and `bun run build` pass; `bun test` passes with tests covering the tokenizer wrapper, volatile-content detection, offload ranking, and the rewriter.
+- [x] `apps/harness-token-lab/README.md` with run steps, what each panel does, the heuristics used, and credit + links to Eric Zakariasson's post (https://x.com/ericzakariasson/status/2102853511637774551) and Cursor's post (https://x.com/cursor_ai/status/2102786814633464159).
+- [x] This `PLAN.md` committed as `apps/harness-token-lab/PLAN.md` as the first commit.
+- [x] Exactly one PR against `main`, titled like `feat(harness-token-lab): offline token + cache-layout lab for agent harness prompts`, whose body embeds at least one screenshot of the main view AND a short screen-recording video of the core loop (load sample → view breakdown → toggle suggestions → see rewrite savings). Media under `apps/harness-token-lab/artifacts/` and/or attached the Cursor cloud-agent way.
+- [x] `git diff --name-only main...HEAD` lists only paths under `apps/harness-token-lab/`. No other files in the repo change (no root, no other apps, no tracking/, no lockfiles outside the app).
