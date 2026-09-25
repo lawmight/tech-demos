@@ -148,8 +148,11 @@ export interface Rewrite {
   after: Counts;
   /** (before.total - after.total) / before.total, 0..1. */
   savings: number;
-  /** (after.prefix - before.prefix) / max(1, before.total), 0..1. */
-  prefixGain: number;
+  /**
+   * Share of the tokens re-read uncached every turn that the rewrite removes:
+   * (beforeUncached - afterUncached) / max(1, beforeUncached), where uncached = total - prefix. 0..1.
+   */
+  uncachedSavings: number;
 }
 
 export interface Pricing {
