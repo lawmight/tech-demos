@@ -85,11 +85,12 @@
       "title": "Cursor harness token-efficiency prompt (Eric Zakariasson)",
       "url": "https://x.com/ericzakariasson/status/2102853511637774551",
       "date": "2026-09-25",
-      "status": "proposed",
+      "status": "approved",
       "slug": "harness-token-lab",
       "related_ids": [
         "2102786814633464159"
-      ]
+      ],
+      "reason": "Tom: approve (2026-09-25)"
     }
   ],
   "built": []
