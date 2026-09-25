@@ -79,6 +79,17 @@
       "status": "skipped",
       "slug": "opus-55-bakeoff",
       "reason": "Tom: none skip (2026-09-24)"
+    },
+    {
+      "id": "2102853511637774551",
+      "title": "Cursor harness token-efficiency prompt (Eric Zakariasson)",
+      "url": "https://x.com/ericzakariasson/status/2102853511637774551",
+      "date": "2026-09-25",
+      "status": "proposed",
+      "slug": "harness-token-lab",
+      "related_ids": [
+        "2102786814633464159"
+      ]
     }
   ],
   "built": []
