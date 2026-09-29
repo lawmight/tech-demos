@@ -97,8 +97,9 @@
       "title": "Cursor Projects (coordinator agent)",
       "url": "https://x.com/cursor_ai/status/2098162488013455784",
       "date": "2026-09-29",
-      "status": "proposed",
-      "slug": "projects-coordinator-lab"
+      "status": "approved",
+      "slug": "projects-coordinator-lab",
+      "reason": "Tom approved 2026-09-29 10:18 CST; build model Sonnet 5.5 (Tom-named)"
     }
   ],
   "built": []
