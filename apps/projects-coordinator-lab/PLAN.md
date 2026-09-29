@@ -34,13 +34,13 @@ Optional (not required): "Real planner" using an LLM when an env key is set serv
 
 ## DONE-LOOKS-LIKE
 
-- [ ] `cd apps/projects-coordinator-lab && bun install && bun run dev` starts the app with no env vars and no API key; works offline.
-- [ ] On first load a sample goal is preloaded; one click (or auto-run) plays the whole loop: coordinator plan appears in the thread and plan panel → 2–3 subagent cards go queued → running → done with progress → results fold back into the same thread → final coordinator summary.
-- [ ] A follow-up message in the same thread routes new work to an existing subagent (reuse is visible on the card) rather than starting a new thread.
-- [ ] Asking the coordinator to write code directly makes it decline and delegate (visible in the thread; rule strip shows why).
-- [ ] Reloading the page keeps the thread, plan, and cards (localStorage); reset clears them.
-- [ ] `bun run typecheck` and `bun run build` pass; `bun test` passes with tests covering the planner, dispatch state transitions (incl. failure), subagent reuse routing, and result folding.
-- [ ] `apps/projects-coordinator-lab/README.md` with run steps, what each panel shows, how the simulation works (clearly stated as a simulation, not the Cursor API), and credit + link to Cursor's post (https://x.com/cursor_ai/status/2098162488013455784).
-- [ ] This `PLAN.md` committed as `apps/projects-coordinator-lab/PLAN.md` as the first commit.
-- [ ] Exactly one PR against `main`, titled like `feat(projects-coordinator-lab): offline coordinator-agent playground`, whose body embeds at least one screenshot of the main view AND a short screen-recording video of the core loop (goal → plan → subagents run → results fold back → follow-up reuses a subagent). Media under `apps/projects-coordinator-lab/artifacts/` and/or attached the Cursor cloud-agent way.
-- [ ] `git diff --name-only main...HEAD` lists only paths under `apps/projects-coordinator-lab/`. No other files in the repo change.
+- [x] `cd apps/projects-coordinator-lab && bun install && bun run dev` starts the app with no env vars and no API key; works offline.
+- [x] On first load a sample goal is preloaded; one click (or auto-run) plays the whole loop: coordinator plan appears in the thread and plan panel → 2–3 subagent cards go queued → running → done with progress → results fold back into the same thread → final coordinator summary.
+- [x] A follow-up message in the same thread routes new work to an existing subagent (reuse is visible on the card) rather than starting a new thread.
+- [x] Asking the coordinator to write code directly makes it decline and delegate (visible in the thread; rule strip shows why).
+- [x] Reloading the page keeps the thread, plan, and cards (localStorage); reset clears them.
+- [x] `bun run typecheck` and `bun run build` pass; `bun test` passes with tests covering the planner, dispatch state transitions (incl. failure), subagent reuse routing, and result folding.
+- [x] `apps/projects-coordinator-lab/README.md` with run steps, what each panel shows, how the simulation works (clearly stated as a simulation, not the Cursor API), and credit + link to Cursor's post (https://x.com/cursor_ai/status/2098162488013455784).
+- [x] This `PLAN.md` committed as `apps/projects-coordinator-lab/PLAN.md` as the first commit.
+- [x] Exactly one PR against `main`, titled like `feat(projects-coordinator-lab): offline coordinator-agent playground`, whose body embeds at least one screenshot of the main view AND a short screen-recording video of the core loop (goal → plan → subagents run → results fold back → follow-up reuses a subagent). Media under `apps/projects-coordinator-lab/artifacts/` and/or attached the Cursor cloud-agent way.
+- [x] `git diff --name-only main...HEAD` lists only paths under `apps/projects-coordinator-lab/`. No other files in the repo change.
