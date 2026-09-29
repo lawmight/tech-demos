@@ -1,0 +1,7 @@
+decision	choice	reason
+Stack	Bun + Vite + React + TypeScript	Gives clean typecheck and build; bundle is ~160 KB
+Dev runner	bunx --bun vite	Keeps Bun as the only package manager and runtime
+Planner	Keyword rules, no LLM	Offline and deterministic, per ticket
+Subagent identity	One persistent subagent per role, id equals role	Makes reuse routing a lookup instead of matching
+Concurrency	2 running at once	So the third card is visibly queued
+Failure injection	Fails API task at 60
