@@ -106,12 +106,13 @@
       "title": "Codex cloud environments",
       "url": "https://x.com/OpenAIDevs/status/2104997619152130278",
       "date": "2026-09-30",
-      "status": "proposed",
+      "status": "approved",
       "slug": "codex-cloud-env-lab",
       "related_ids": [
         "2104997734294139151",
         "2104997759673922033"
-      ]
+      ],
+      "reason": "Tom approved 2026-09-30; build model Grok 4.7 (Tom-named)"
     }
   ],
   "built": []
