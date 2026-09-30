@@ -35,13 +35,13 @@ Optional (not required): "Real planner" using an LLM when an env key is set; hid
 
 ## DONE-LOOKS-LIKE
 
-- [ ] `cd apps/codex-cloud-env-lab && bun install && bun run dev` starts the app with no env vars and no API key; works offline.
-- [ ] On first load a sample environment recipe is preloaded; user can save/edit it; starting the sample task shows environment boot then task progress on the laptop view.
-- [ ] Closing the laptop mid-run leaves the cloud task running; the phone panel continues to show progress and accepts at least one steer command that visibly affects the remaining run or final summary.
-- [ ] Selecting a saved environment when starting a task (reuse) is visible; a second environment or re-run against the same recipe demonstrates "reusable environments".
-- [ ] Reloading the page keeps saved environments and the last/active task (localStorage); reset clears them.
-- [ ] `bun run typecheck` and `bun run build` pass; `bun test` passes with tests covering recipe validation, task/env state transitions (incl. laptop-closed continuation), and steer command handling.
-- [ ] `apps/codex-cloud-env-lab/README.md` with run steps, what each panel shows, how the simulation works (clearly stated as a simulation, not the Codex API), and credit + links to the OpenAIDevs posts (https://x.com/OpenAIDevs/status/2104997619152130278 and the follow-up).
-- [ ] This `PLAN.md` committed as `apps/codex-cloud-env-lab/PLAN.md` as the first commit.
-- [ ] Exactly one PR against `main`, titled like `feat(codex-cloud-env-lab): offline Codex cloud-env playground`, whose body embeds at least one screenshot of the main view AND a short screen-recording video of the core loop (save env → start task → close laptop → steer from phone → done). Media under `apps/codex-cloud-env-lab/artifacts/` and/or attached the Cursor cloud-agent way.
-- [ ] `git diff --name-only main...HEAD` lists only paths under `apps/codex-cloud-env-lab/`. No other files in the repo change.
+- [x] `cd apps/codex-cloud-env-lab && bun install && bun run dev` starts the app with no env vars and no API key; works offline.
+- [x] On first load a sample environment recipe is preloaded; user can save/edit it; starting the sample task shows environment boot then task progress on the laptop view.
+- [x] Closing the laptop mid-run leaves the cloud task running; the phone panel continues to show progress and accepts at least one steer command that visibly affects the remaining run or final summary.
+- [x] Selecting a saved environment when starting a task (reuse) is visible; a second environment or re-run against the same recipe demonstrates "reusable environments".
+- [x] Reloading the page keeps saved environments and the last/active task (localStorage); reset clears them.
+- [x] `bun run typecheck` and `bun run build` pass; `bun test` passes with tests covering recipe validation, task/env state transitions (incl. laptop-closed continuation), and steer command handling.
+- [x] `apps/codex-cloud-env-lab/README.md` with run steps, what each panel shows, how the simulation works (clearly stated as a simulation, not the Codex API), and credit + links to the OpenAIDevs posts (https://x.com/OpenAIDevs/status/2104997619152130278 and the follow-up).
+- [x] This `PLAN.md` committed as `apps/codex-cloud-env-lab/PLAN.md` as the first commit.
+- [x] Exactly one PR against `main`, titled like `feat(codex-cloud-env-lab): offline Codex cloud-env playground`, whose body embeds at least one screenshot of the main view AND a short screen-recording video of the core loop (save env → start task → close laptop → steer from phone → done). Media under `apps/codex-cloud-env-lab/artifacts/` and/or attached the Cursor cloud-agent way.
+- [x] `git diff --name-only main...HEAD` lists only paths under `apps/codex-cloud-env-lab/`. No other files in the repo change.

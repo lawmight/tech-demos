@@ -3,3 +3,5 @@ ts	phase	decision	why	evidence	result
 2026-09-30T01:39:49Z	design	One task reducer plus a recipe check at the storage boundary	The task is one lifecycle, so booleans for boot and laptop would drift	apps/codex-cloud-env-lab/src/lib/machine.ts	tests green
 2026-09-30T01:39:49Z	design	Built the app in this agent instead of a fleet	The ticket barred swarm fleets and said to inherit the parent model	user ticket	one owner
 2026-09-30T01:39:49Z	review	Comment review found no comments to delete	The only directive is the Vite client reference	Comment Sicko bc-b717412e	deletion count 0
+2026-09-30T02:04:58Z	verify	Work lines no longer include a plan total	A steer grew the plan and the old N of M labels looked wrong	apps/codex-cloud-env-lab/src/lib/machine.ts	tests green
+2026-09-30T02:04:58Z	verify	Ran the core loop in the browser and kept the recording	Save, start, close laptop, focus on tests, and the same Done sentence on both panels	/opt/cursor/artifacts/codex_cloud_env_core_loop.mp4	video review passed
