@@ -1,0 +1,118 @@
+{
+  "proposed": [
+    {
+      "id": "2093780571638149523",
+      "title": "Sodium WebMCP",
+      "url": "https://x.com/saviomartin/status/2093780571638149523",
+      "date": "2026-09-01",
+      "status": "skipped",
+      "reason": "overlaps tinkabot"
+    },
+    {
+      "id": "2092375056089563604",
+      "title": "fal self-animate",
+      "url": "https://x.com/shubgaur/status/2092375056089563604",
+      "date": "2026-09-01",
+      "status": "approved",
+      "slug": "fal-self-animate"
+    },
+    {
+      "id": "2094515104670715940",
+      "title": "Hermes Agent Pantheon (v0.21.0)",
+      "url": "https://x.com/NousResearch/status/2094515104670715940",
+      "date": "2026-09-02",
+      "status": "skipped",
+      "slug": "hermes-pantheon-todos",
+      "reason": "Tom: no demo; village steal instead"
+    },
+    {
+      "id": "2095260582064672966",
+      "title": "Daytona sandboxes for Cursor Self-Hosted Machines",
+      "url": "https://x.com/daytonaio/status/2095260582064672966",
+      "date": "2026-09-03",
+      "status": "proposed",
+      "slug": "daytona-sandbox-lab"
+    },
+    {
+      "id": "2097930608790167907",
+      "title": "DeepSeek-V4.1-Flash",
+      "url": "https://x.com/deepseek_ai/status/2097930608790167907",
+      "date": "2026-09-14",
+      "status": "proposed",
+      "slug": "deepseek-flash-vision"
+    },
+    {
+      "id": "2100681226143092875",
+      "title": "Bend 2",
+      "url": "https://x.com/VictorTaelin/status/2100681226143092875",
+      "date": "2026-09-18",
+      "status": "proposed",
+      "slug": "bend2-sticky"
+    },
+    {
+      "id": "2101544156757950697",
+      "title": "Jev (TypeSafe AI)",
+      "url": "https://x.com/rronak_/status/2101544156757950697",
+      "date": "2026-09-21",
+      "status": "skipped",
+      "slug": "jev-decision-lab",
+      "related_ids": [
+        "2101319684578795577",
+        "2101364695596765613"
+      ],
+      "reason": "Tom: none skip (2026-09-24)"
+    },
+    {
+      "id": "2102069815225586149",
+      "title": "Grok 4.7",
+      "url": "https://x.com/SpaceXAI/status/2102069815225586149",
+      "date": "2026-09-22",
+      "status": "skipped",
+      "slug": "grok-47-constraint-lab",
+      "reason": "Tom: Skip"
+    },
+    {
+      "id": "2102435511222890900",
+      "title": "Claude Opus 5.5",
+      "url": "https://x.com/claudeai/status/2102435511222890900",
+      "date": "2026-09-23",
+      "status": "skipped",
+      "slug": "opus-55-bakeoff",
+      "reason": "Tom: none skip (2026-09-24)"
+    },
+    {
+      "id": "2102853511637774551",
+      "title": "Cursor harness token-efficiency prompt (Eric Zakariasson)",
+      "url": "https://x.com/ericzakariasson/status/2102853511637774551",
+      "date": "2026-09-25",
+      "status": "approved",
+      "slug": "harness-token-lab",
+      "related_ids": [
+        "2102786814633464159"
+      ],
+      "reason": "Tom: approve (2026-09-25)"
+    },
+    {
+      "id": "2098162488013455784",
+      "title": "Cursor Projects (coordinator agent)",
+      "url": "https://x.com/cursor_ai/status/2098162488013455784",
+      "date": "2026-09-29",
+      "status": "approved",
+      "slug": "projects-coordinator-lab",
+      "reason": "Tom approved 2026-09-29 10:18 CST; build model Sonnet 5.5 (Tom-named)"
+    },
+    {
+      "id": "2104997619152130278",
+      "title": "Codex cloud environments",
+      "url": "https://x.com/OpenAIDevs/status/2104997619152130278",
+      "date": "2026-09-30",
+      "status": "proposed",
+      "slug": "codex-cloud-env-lab",
+      "related_ids": [
+        "2104997734294139151",
+        "2104997759673922033"
+      ]
+    }
+  ],
+  "built": []
+}
