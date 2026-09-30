@@ -44,3 +44,9 @@ Optional (not required): "Real planner" using an LLM when an env key is set serv
 - [x] This `PLAN.md` committed as `apps/projects-coordinator-lab/PLAN.md` as the first commit.
 - [x] Exactly one PR against `main`, titled like `feat(projects-coordinator-lab): offline coordinator-agent playground`, whose body embeds at least one screenshot of the main view AND a short screen-recording video of the core loop (goal → plan → subagents run → results fold back → follow-up reuses a subagent). Media under `apps/projects-coordinator-lab/artifacts/` and/or attached the Cursor cloud-agent way.
 - [x] `git diff --name-only main...HEAD` lists only paths under `apps/projects-coordinator-lab/`. No other files in the repo change.
+
+## Reload-crash regression fix
+
+- Validate the complete persisted message shape, including rule IDs, before restoring a thread.
+- Reject corrupt messages safely while preserving valid saved threads unchanged.
+- Add malformed-message and rendering regression coverage; run tests, typecheck, and production build.
