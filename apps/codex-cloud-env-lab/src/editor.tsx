@@ -28,8 +28,10 @@ export function Editor({
   return (
     <section className="panel editor" aria-label="Environment recipe">
       <header className="panel-head">
-        <h2>Environment recipe</h2>
-        <p>Repo, dependencies, setup script, and settings. Save it once, then reuse it.</p>
+        <div>
+          <h2>Environment recipe</h2>
+          <p>Repo, dependencies, setup script, and settings. Save it once, then reuse it.</p>
+        </div>
       </header>
 
       <label>
@@ -54,7 +56,7 @@ export function Editor({
         Dependencies
         <textarea
           data-testid="env-deps"
-          rows={4}
+          rows={3}
           value={draft.dependencies.join("\n")}
           onChange={(event) =>
             onChange({ ...draft, dependencies: event.target.value.split("\n") })
@@ -66,7 +68,7 @@ export function Editor({
         Setup script
         <textarea
           data-testid="env-setup"
-          rows={4}
+          rows={3}
           spellCheck={false}
           value={draft.setupScript}
           onChange={(event) => onChange({ ...draft, setupScript: event.target.value })}

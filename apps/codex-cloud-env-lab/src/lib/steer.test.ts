@@ -39,7 +39,7 @@ test("parseSteer accepts the phone commands and rejects unknown text", () => {
 
 test("focus on tests replaces the remaining steps and the summary", () => {
   const afterFirstStep = ticks(sampleTask(), 5);
-  expect(afterFirstStep.log.at(-1)).toBe("Step 1/5: Read the repository");
+  expect(afterFirstStep.log.at(-1)).toBe("Work: Read the repository");
 
   const steered = reduceTask(afterFirstStep, { type: "steer", command: "focus-on-tests" });
   expect(steered.phase).toEqual({
@@ -58,7 +58,7 @@ test("focus on tests replaces the remaining steps and the summary", () => {
   expect(reduceTask(steered, { type: "steer", command: "focus-on-tests" })).toEqual(steered);
 
   const next = reduceTask(steered, { type: "tick" });
-  expect(next.log.at(-1)).toBe("Step 2/5: List the existing tests");
+  expect(next.log.at(-1)).toBe("Work: List the existing tests");
 
   let done = next;
   let guard = 0;
@@ -70,8 +70,8 @@ test("focus on tests replaces the remaining steps and the summary", () => {
     }
   }
   expect(done.phase).toEqual({ kind: "done", summary: TEST_SUMMARY });
-  expect(done.log).toContain("Step 5/5: Publish the test-first result");
-  expect(done.log).not.toContain("Step 2/5: Sketch the change");
+  expect(done.log).toContain("Work: Publish the test-first result");
+  expect(done.log).not.toContain("Work: Sketch the change");
 });
 
 test("a steer during boot changes the plan that runs after the laptop closes", () => {
@@ -98,7 +98,7 @@ test("a steer during boot changes the plan that runs after the laptop closes", (
   });
 
   const firstStep = reduceTask(queued, { type: "tick" });
-  expect(firstStep.log.at(-1)).toBe("Step 1/4: Drop the first sketch");
+  expect(firstStep.log.at(-1)).toBe("Work: Drop the first sketch");
 
   let done = firstStep;
   let guard = 0;

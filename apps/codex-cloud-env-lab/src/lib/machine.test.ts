@@ -75,8 +75,8 @@ test("closing the laptop does not stop the cloud task", () => {
   expect(task.log).toContain("Boot 3/4: Running setup script");
   expect(task.log).toContain("Boot 4/4: Environment ready");
   expect(task.log).toContain("Queued: Implement feature X");
-  expect(task.log).toContain("Step 1/5: Read the repository");
-  expect(task.log).toContain("Step 5/5: Publish the result");
+  expect(task.log).toContain("Work: Read the repository");
+  expect(task.log).toContain("Work: Publish the result");
   expect(task.log.at(-1)).toBe(SUMMARY);
   expect(taskStatusLabel(task)).toBe("Done");
   expect(reduceTask(task, { type: "tick" })).toEqual(task);
@@ -97,6 +97,6 @@ test("queued then running labels follow the boot", () => {
   expect(queued.phase.kind).toBe("running");
   expect(taskStatusLabel(queued)).toBe("Queued");
   const running = ticks(queued, 1);
-  expect(running.log.at(-1)).toBe("Step 1/5: Read the repository");
+  expect(running.log.at(-1)).toBe("Work: Read the repository");
   expect(taskStatusLabel(running)).toBe("Running");
 });

@@ -177,7 +177,7 @@ function tickTask(task: CloudTask): CloudTask {
     return { ...task, phase: { kind: "done", summary }, log: [...task.log, summary] };
   }
 
-  const stepLine = `Step ${task.phase.index + 1}/${task.phase.plan.length}: ${beat.label}`;
+  const stepLine = `Work: ${beat.label}`;
   const nextIndex = task.phase.index + 1;
   if (nextIndex >= task.phase.plan.length) {
     const summary = doneSummary(task, task.phase.steer);

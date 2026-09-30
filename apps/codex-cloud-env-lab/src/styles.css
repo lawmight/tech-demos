@@ -159,6 +159,10 @@ label {
   overflow: auto;
 }
 
+.editor .panel-head p {
+  max-width: 28ch;
+}
+
 .settings-head,
 .button-row,
 .start-row {
