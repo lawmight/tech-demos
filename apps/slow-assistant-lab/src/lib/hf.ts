@@ -40,6 +40,26 @@ export function parseChatCompletion(json: unknown): ChatParse {
   return { ok: true, text: text.length > MAX_CHARS ? `${text.slice(0, MAX_CHARS - 1)}…` : text };
 }
 
+export type HfStatus = { enabled: false } | { enabled: true; model: string };
+export type TurnResponse = { ok: true; text: string; ms: number } | { ok: false; error: string };
+
+export function parseStatusResponse(json: unknown): HfStatus {
+  if (isRecord(json) && json.enabled === true && typeof json.model === "string") {
+    return { enabled: true, model: json.model };
+  }
+  return { enabled: false };
+}
+
+export function parseTurnResponse(json: unknown): TurnResponse {
+  if (isRecord(json)) {
+    if (json.ok === true && typeof json.text === "string" && typeof json.ms === "number") {
+      return { ok: true, text: json.text, ms: json.ms };
+    }
+    if (json.ok === false && typeof json.error === "string") return { ok: false, error: json.error };
+  }
+  return { ok: false, error: "Malformed /api/hf/turn response" };
+}
+
 export function hfConfig(env: Record<string, string | undefined>): HfConfig {
   const token = (env.HF_TOKEN?.trim() || env.HUGGINGFACE_API_KEY?.trim()) ?? "";
   if (token.length === 0) return { enabled: false };

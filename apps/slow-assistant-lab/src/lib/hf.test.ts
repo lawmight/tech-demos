@@ -1,5 +1,12 @@
 import { describe, expect, test } from "bun:test";
-import { HF_SYSTEM_PROMPT, buildTurnPrompt, hfConfig, parseChatCompletion } from "./hf";
+import {
+  HF_SYSTEM_PROMPT,
+  buildTurnPrompt,
+  hfConfig,
+  parseChatCompletion,
+  parseStatusResponse,
+  parseTurnResponse,
+} from "./hf";
 
 describe("buildTurnPrompt", () => {
   test("tiny system prompt plus goal, last result and the deterministic draft", () => {
@@ -61,6 +68,36 @@ describe("parseChatCompletion", () => {
       ok: false,
       error: "Invalid credentials",
     });
+  });
+});
+
+describe("parseStatusResponse", () => {
+  test("enabled with a model", () => {
+    expect(parseStatusResponse({ enabled: true, model: "Qwen/Qwen3-4B-Instruct-2507" })).toEqual({
+      enabled: true,
+      model: "Qwen/Qwen3-4B-Instruct-2507",
+    });
+  });
+
+  test("anything else is disabled", () => {
+    expect(parseStatusResponse({ enabled: false })).toEqual({ enabled: false });
+    expect(parseStatusResponse({ enabled: true })).toEqual({ enabled: false });
+    expect(parseStatusResponse("<!doctype html>")).toEqual({ enabled: false });
+  });
+});
+
+describe("parseTurnResponse", () => {
+  test("ok with text and ms", () => {
+    expect(parseTurnResponse({ ok: true, text: "Booking it.", ms: 412 })).toEqual({ ok: true, text: "Booking it.", ms: 412 });
+  });
+
+  test("error passes through", () => {
+    expect(parseTurnResponse({ ok: false, error: "HF_TOKEN not set" })).toEqual({ ok: false, error: "HF_TOKEN not set" });
+  });
+
+  test("malformed", () => {
+    expect(parseTurnResponse({ ok: true, text: 3 })).toEqual({ ok: false, error: "Malformed /api/hf/turn response" });
+    expect(parseTurnResponse(null)).toEqual({ ok: false, error: "Malformed /api/hf/turn response" });
   });
 });
 
