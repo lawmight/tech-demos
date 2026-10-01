@@ -25,11 +25,11 @@ Bun + Vite + React + TypeScript (or canvas-friendly setup), Bun only. Plain CSS.
 
 ## DONE-LOOKS-LIKE
 
-- [ ] `bun install && bun run dev` offline, no env vars.
-- [ ] Playable short puzzle-platformer level with two characters and a cooperative beat; win condition works.
-- [ ] Visual Bar shows Brief → Plan → Playable → Critic with original placeholder compare (no commercial game screenshots).
-- [ ] Original title/art; README disclaims IP and credits Eric’s post + skill install line.
-- [ ] `bun run typecheck`, `bun run build`, `bun test` pass.
-- [ ] PLAN.md first commit; checkboxes ticked finally.
-- [ ] One PR `feat(game-builder-lab): ...` with screenshot AND video of play + Visual Bar.
-- [ ] Diff only under `apps/game-builder-lab/`.
+- [x] `bun install && bun run dev` offline, no env vars.
+- [x] Playable short puzzle-platformer level with two characters and a cooperative beat; win condition works.
+- [x] Visual Bar shows Brief → Plan → Playable → Critic with original placeholder compare (no commercial game screenshots).
+- [x] Original title/art; README disclaims IP and credits Eric’s post + skill install line.
+- [x] `bun run typecheck`, `bun run build`, `bun test` pass.
+- [x] PLAN.md first commit; checkboxes ticked finally.
+- [x] One PR `feat(game-builder-lab): ...` with screenshot AND video of play + Visual Bar.
+- [x] Diff only under `apps/game-builder-lab/`.
