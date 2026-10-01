@@ -113,6 +113,15 @@
         "2104997759673922033"
       ],
       "reason": "Tom approved 2026-09-30; build model Grok 4.7 (Tom-named)"
+    },
+    {
+      "id": "2105372125288976402",
+      "title": "Cerebras slow personal assistants (Pi harness)",
+      "url": "https://x.com/MilksandMatcha/status/2105372125288976402",
+      "date": "2026-10-01",
+      "status": "approved",
+      "slug": "slow-assistant-lab",
+      "reason": "Tom approved 2026-10-01 via Sys; Pi + offline + optional HF; model Claude Opus 5.5"
     }
   ],
   "built": []
