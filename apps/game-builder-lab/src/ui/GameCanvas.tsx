@@ -70,6 +70,7 @@ export const GameCanvas = forwardRef<GameHandle, Props>(function GameCanvas({ so
 
     const onKeyDown = (e: KeyboardEvent): void => {
       if (!HANDLED.has(e.code)) return;
+      if (e.code === "Tab" && !soloRef.current) return;
       e.preventDefault();
       if (e.code === "Tab" && !e.repeat) {
         activeRef.current = activeRef.current === "cinder" ? "drift" : "cinder";
