@@ -156,9 +156,7 @@ export function App() {
   const reset = () => {
     try {
       localStorage.removeItem(STORAGE_KEY);
-    } catch {
-      // Ignore unavailable storage.
-    }
+    } catch {}
     setGoalText(DEFAULT_SAVED.goalText);
     setSkillText(DEFAULT_SAVED.skillText);
     setLevers(DEFAULT_SAVED.levers);

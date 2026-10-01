@@ -35,13 +35,13 @@ Bun + Vite + React + TypeScript, Bun only. Plain CSS or Tailwind. Pure logic in 
 
 ## DONE-LOOKS-LIKE
 
-- [ ] `bun install && bun run dev` works with no env vars; offline deterministic mode complete.
-- [ ] Slow vs Fast (or both) shows parallel vs sequential and skill vs discovery on dinner booking; timelines + metrics visible.
-- [ ] Pi-shaped harness UI: system prompt + ~4 tools + editable skill.
-- [ ] HF optional path documented; hidden/disabled without token; no secrets committed.
-- [ ] Reload keeps skill/settings; Reset clears.
-- [ ] `bun run typecheck`, `bun run build`, `bun test` pass (planner/dispatch/skill/timeline covered).
-- [ ] README: run steps, what Pi/skill/parallel mean here, simulation disclaimer, credit + links to blog and X.
-- [ ] PLAN.md first commit; checkboxes ticked in final commit.
-- [ ] One PR `feat(slow-assistant-lab): ...` with screenshot AND video of Slow vs Fast core loop.
-- [ ] Diff only under `apps/slow-assistant-lab/`.
+- [x] `bun install && bun run dev` works with no env vars; offline deterministic mode complete.
+- [x] Slow vs Fast (or both) shows parallel vs sequential and skill vs discovery on dinner booking; timelines + metrics visible.
+- [x] Pi-shaped harness UI: system prompt + ~4 tools + editable skill.
+- [x] HF optional path documented; hidden/disabled without token; no secrets committed.
+- [x] Reload keeps skill/settings; Reset clears.
+- [x] `bun run typecheck`, `bun run build`, `bun test` pass (planner/dispatch/skill/timeline covered).
+- [x] README: run steps, what Pi/skill/parallel mean here, simulation disclaimer, credit + links to blog and X.
+- [x] PLAN.md first commit; checkboxes ticked in final commit.
+- [x] One PR `feat(slow-assistant-lab): ...` with screenshot AND video of Slow vs Fast core loop.
+- [x] Diff only under `apps/slow-assistant-lab/`.
