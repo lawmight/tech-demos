@@ -1,6 +1,6 @@
-import { join } from "node:path";
+import { execFile } from "node:child_process";
 import { readFile } from "node:fs/promises";
-import { spawn } from "node:child_process";
+import { join } from "node:path";
 
 const ROOT = join(import.meta.dir, "..");
 const BEND_DIR = join(ROOT, "bend");
@@ -14,6 +14,8 @@ type BendResult = {
   bendAvailable: boolean;
   bendVersion: string | null;
 };
+
+const BEND_TIMEOUT_MS = 10_000;
 
 const SAMPLE = {
   proof: "All terms check.",
@@ -31,29 +33,95 @@ function bendBin(): string {
   return join(home, "bin", "bend");
 }
 
-async function bendVersion(): Promise<string | null> {
+type BendChild = {
+  code: number | null;
+  stdout: string;
+  stderr: string;
+  timedOut: boolean;
+  spawnError: string | null;
+};
+
+type VersionProbe = {
+  version: string | null;
+  timedOut: boolean;
+};
+
+function timeoutMessage(command: string, waitedMs: number): string {
+  const seconds = Math.max(1, Math.round(waitedMs / 1000));
+  return `${command} timed out after ${seconds}s`;
+}
+
+function execBend(args: string[], cwd: string | undefined, timeoutMs: number): Promise<BendChild> {
   return new Promise((resolve) => {
-    const proc = spawn(bendBin(), ["--version"], { env: process.env });
-    let out = "";
-    proc.stdout.on("data", (chunk: Buffer) => {
-      out += chunk.toString();
-    });
-    proc.on("close", (code) => {
-      resolve(code === 0 ? out.trim() : null);
-    });
-    proc.on("error", () => resolve(null));
+    execFile(
+      bendBin(),
+      args,
+      {
+        cwd,
+        env: process.env,
+        encoding: "utf8",
+        timeout: timeoutMs,
+        killSignal: "SIGKILL",
+        maxBuffer: 1_048_576,
+      },
+      (err, stdout, stderr) => {
+        const out = stdout ?? "";
+        const errText = stderr ?? "";
+        if (!err) {
+          resolve({ code: 0, stdout: out, stderr: errText, timedOut: false, spawnError: null });
+          return;
+        }
+        if (err.code === "ERR_CHILD_PROCESS_STDIO_MAXBUFFER") {
+          resolve({ code: null, stdout: out, stderr: errText, timedOut: false, spawnError: err.message });
+          return;
+        }
+        if (err.killed) {
+          resolve({ code: null, stdout: out, stderr: errText, timedOut: true, spawnError: null });
+          return;
+        }
+        if (typeof err.code === "number") {
+          resolve({ code: err.code, stdout: out, stderr: errText, timedOut: false, spawnError: null });
+          return;
+        }
+        resolve({
+          code: null,
+          stdout: out,
+          stderr: errText,
+          timedOut: false,
+          spawnError: err.message,
+        });
+      },
+    );
   });
+}
+
+async function bendVersion(): Promise<VersionProbe> {
+  const child = await execBend(["--version"], undefined, BEND_TIMEOUT_MS);
+  if (child.timedOut) return { version: null, timedOut: true };
+  if (child.spawnError !== null || child.code !== 0) return { version: null, timedOut: false };
+  return { version: child.stdout.trim(), timedOut: false };
 }
 
 async function runBend(file: string): Promise<BendResult> {
   const command = `bend ${file}`;
-  const version = await bendVersion();
-  const bendAvailable = version !== null;
+  const started = Date.now();
+  const probed = await bendVersion();
 
-  if (!bendAvailable) {
+  if (probed.timedOut) {
+    return {
+      ok: false,
+      stdout: "",
+      stderr: timeoutMessage("bend --version", BEND_TIMEOUT_MS),
+      command,
+      bendAvailable: false,
+      bendVersion: null,
+    };
+  }
+
+  if (probed.version === null) {
     const sample = file === "PROOF.bend" ? SAMPLE.proof : SAMPLE.parallel;
     return {
-      ok: true,
+      ok: false,
       stdout: `[bend not installed — sample output]\n${sample}`,
       stderr: "",
       command,
@@ -62,40 +130,47 @@ async function runBend(file: string): Promise<BendResult> {
     };
   }
 
-  return new Promise((resolve) => {
-    const proc = spawn(bendBin(), [file], {
-      cwd: BEND_DIR,
-      env: process.env,
-    });
-    let stdout = "";
-    let stderr = "";
-    proc.stdout.on("data", (chunk: Buffer) => {
-      stdout += chunk.toString();
-    });
-    proc.stderr.on("data", (chunk: Buffer) => {
-      stderr += chunk.toString();
-    });
-    proc.on("close", (code) => {
-      resolve({
-        ok: code === 0,
-        stdout: stdout.trim(),
-        stderr: stderr.trim(),
-        command,
-        bendAvailable: true,
-        bendVersion: version,
-      });
-    });
-    proc.on("error", (err) => {
-      resolve({
-        ok: false,
-        stdout: "",
-        stderr: String(err),
-        command,
-        bendAvailable: false,
-        bendVersion: null,
-      });
-    });
-  });
+  const remaining = BEND_TIMEOUT_MS - (Date.now() - started);
+  if (remaining <= 0) {
+    return {
+      ok: false,
+      stdout: "",
+      stderr: timeoutMessage(command, BEND_TIMEOUT_MS),
+      command,
+      bendAvailable: true,
+      bendVersion: probed.version,
+    };
+  }
+
+  const child = await execBend([file], BEND_DIR, remaining);
+  if (child.timedOut) {
+    return {
+      ok: false,
+      stdout: child.stdout.trim(),
+      stderr: timeoutMessage(command, remaining),
+      command,
+      bendAvailable: true,
+      bendVersion: probed.version,
+    };
+  }
+  if (child.spawnError !== null) {
+    return {
+      ok: false,
+      stdout: "",
+      stderr: child.spawnError,
+      command,
+      bendAvailable: false,
+      bendVersion: null,
+    };
+  }
+  return {
+    ok: child.code === 0,
+    stdout: child.stdout.trim(),
+    stderr: child.stderr.trim(),
+    command,
+    bendAvailable: true,
+    bendVersion: probed.version,
+  };
 }
 
 const SOURCES: Record<string, string> = {
@@ -129,10 +204,10 @@ const server = Bun.serve({
     }
 
     if (url.pathname === "/api/status") {
-      const version = await bendVersion();
+      const probed = await bendVersion();
       return Response.json({
-        bendAvailable: version !== null,
-        bendVersion: version,
+        bendAvailable: probed.version !== null,
+        bendVersion: probed.version,
         bendDir: BEND_DIR,
       });
     }
