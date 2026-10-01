@@ -1,0 +1,10 @@
+decision	choice	reason
+Stack	Bun + Vite + React + TypeScript	Clean typecheck and build; bundle is about 160 KB
+Dev runner	bunx --bun vite	Keeps Bun as the only package manager and runtime
+Planner	Keyword rules, no LLM	Offline and deterministic, per ticket
+Subagent identity	One persistent subagent per role, id equals role	Reuse routing becomes a lookup
+Concurrency	Two running at once	The third card is visibly queued
+Failure injection	API task fails at 60 percent, one automatic retry	Shows notice, re-dispatch, and report-on-last-attempt paths
+Dev port	5173 on 0.0.0.0	Vite default, reachable from a remote browser
+Optional real-LLM planner	Skipped	Optional in ticket; keeps the app key-free and lean
+Subagent model	Omitted on all Task calls (inherit parent)	Ticket constraint; subagents were used only for browser QA and screen recording
