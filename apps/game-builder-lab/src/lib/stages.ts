@@ -61,8 +61,8 @@ export function currentStage(state: StageState): Stage {
 }
 
 export function stageStatus(state: StageState, stage: Stage): StageStatus {
-  if (passed(state, stage)) return "done";
-  return stage === currentStage(state) ? "current" : "locked";
+  if (!canView(state, stage)) return "locked";
+  return passed(state, stage) ? "done" : "current";
 }
 
 /** A stage opens once every earlier stage has passed its gate. */

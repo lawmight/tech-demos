@@ -62,6 +62,14 @@ describe("stage gates", () => {
     expect(stageStatus(s, "critic")).toBe("current");
   });
 
+  test("a capture taken before the brief is locked leaves later stages locked", () => {
+    const s = apply([{ type: "captured", verdict: { pass: true, score: 1 } }]);
+    expect(stageStatus(s, "brief")).toBe("current");
+    expect(stageStatus(s, "playable")).toBe("locked");
+    expect(stageStatus(s, "critic")).toBe("locked");
+    expect(s.viewing).toBe("brief");
+  });
+
   test("a passing capture completes all four stages", () => {
     const s = apply([
       { type: "lock-brief" },
