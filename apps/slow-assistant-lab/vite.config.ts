@@ -1,6 +1,6 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
-import { createHfHandler, hfMiddleware } from "./server/hf";
+import { createHfHandler, hfMiddleware } from "./server/hf.ts";
 
 // The token is read from process.env here, inside the dev/preview server, so it never reaches the browser bundle.
 function hfPlanner(): Plugin {

@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { buildTurnPrompt, hfConfig, parseChatCompletion, type TurnInput } from "../src/lib/hf";
+import { buildTurnPrompt, hfConfig, parseChatCompletion, type TurnInput } from "../src/lib/hf.ts";
 
 export type FetchLike = (url: string, init: RequestInit) => Promise<Response>;
 export type HfRequest = { method: string; url: string; body: unknown };
