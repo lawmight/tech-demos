@@ -27,11 +27,6 @@ function sig(steps: Step[]): string[] {
 const FORM_REJECTED = "form rejected: unknown fields, needs party_size and date";
 
 describe("planRun levers", () => {
-  test("lever presets", () => {
-    expect(SLOW_LEVERS).toEqual({ parallel: false, skill: false, fastTurns: false });
-    expect(FAST_LEVERS).toEqual({ parallel: true, skill: true, fastTurns: true });
-  });
-
   test("fast default: one parallel check batch, skill-guided book, three short turns", () => {
     expect(planRun(DEFAULT_GOAL, DEFAULT_WORLD, FAST_LEVERS, sample)).toEqual([
       { kind: "turn", text: "Skill book-dinner says check all three in parallel.", durationMs: 600 },

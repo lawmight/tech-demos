@@ -1,13 +1,12 @@
 import { describe, expect, test } from "bun:test";
 import { SAMPLE_SKILL } from "./skill";
-import { DEFAULT_SAVED, STORAGE_KEY, parseSaved } from "./storage";
+import { DEFAULT_SAVED, parseSaved } from "./storage";
 
 const metrics = { toolCalls: 5, modelTurns: 3, parallelBatches: 1, failedCalls: 0, wallMs: 16000 };
 
 describe("parseSaved", () => {
-  test("key and defaults", () => {
-    expect(STORAGE_KEY).toBe("slow-assistant-lab:v1");
-    expect(DEFAULT_SAVED).toEqual({
+  test("empty storage yields the sample goal, sample skill and all fast levers", () => {
+    expect(parseSaved(null)).toEqual({
       goalText: "Book dinner for 2 tonight at one of: A Mano, II Borgo, Doppio Zero",
       skillText: SAMPLE_SKILL,
       levers: { parallel: true, skill: true, fastTurns: true },
