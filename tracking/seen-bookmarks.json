@@ -128,8 +128,9 @@
       "title": "Eric Zakariasson game-builder skill",
       "url": "https://x.com/ericzakariasson/status/2105359599234855405",
       "date": "2026-10-01",
-      "status": "proposed",
-      "slug": "game-builder-lab"
+      "status": "approved",
+      "slug": "game-builder-lab",
+      "reason": "Tom approved 2026-10-01; puzzle-platformer homage (Fireboy/Watergirl spirit); model Claude Sonnet 5.5"
     }
   ],
   "built": []
