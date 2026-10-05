@@ -131,6 +131,14 @@
       "status": "approved",
       "slug": "game-builder-lab",
       "reason": "Tom approved 2026-10-01; puzzle-platformer homage (Fireboy/Watergirl spirit); model Claude Sonnet 5.5"
+    },
+    {
+      "id": "2106455605925822967",
+      "title": "Cache Control mod for Claude Code (5-min prompt-cache bar)",
+      "url": "https://x.com/dani_avila7/status/2106455605925822967",
+      "date": "2026-10-05",
+      "status": "proposed",
+      "slug": "cache-warmth-lab"
     }
   ],
   "built": []
