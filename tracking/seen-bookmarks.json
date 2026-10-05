@@ -137,8 +137,9 @@
       "title": "Cache Control mod for Claude Code (5-min prompt-cache bar)",
       "url": "https://x.com/dani_avila7/status/2106455605925822967",
       "date": "2026-10-05",
-      "status": "proposed",
-      "slug": "cache-warmth-lab"
+      "status": "approved",
+      "slug": "cache-warmth-lab",
+      "reason": "Tom approved with tweak 2026-10-05: provider-agnostic (Claude Code, Codex, Cursor, Grok profiles; editable sourced cache-rule config); model grok-4.7 reasoning_effort xhigh, context 500k"
     }
   ],
   "built": []
