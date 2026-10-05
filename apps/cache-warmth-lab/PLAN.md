@@ -27,15 +27,15 @@ Bun + Vite + React + TypeScript, single `package.json`, Bun only. Plain CSS. Pur
 
 ## DONE-LOOKS-LIKE
 
-- [ ] `cd apps/cache-warmth-lab && bun install && bun run dev` starts with no env vars, no API key, and works offline.
-- [ ] ≥4 provider profiles (Anthropic/Claude Code, OpenAI/Codex, Cursor, xAI/Grok) in one editable cache-rule config with per-field source links and a visible `asOf` date; unknown fields shown as `unknown` and editable; edits persist; reset restores shipped defaults. Shipped values were verified via web research at build time (sources in config + README).
-- [ ] The sample session replays side by side across the selected providers with live TTL bars that refill on every turn and drain during idle gaps; speed control and play/pause/step work.
-- [ ] Pre-expiry nudge fires a browser Notification when permitted, and an in-page fallback when not.
-- [ ] Cost panel shows warm vs cold totals per provider and a keep-warm-ping vs re-write what-if for the ~7-minute break, with break-even; flags results that depend on unknown values.
-- [ ] Rate-limit view answers per provider whether cache reads count (`yes`/`no`/`partial`/`unknown` + source) and shows tokens-against-limit for the session.
-- [ ] Transcript import works for Claude Code JSONL, Codex CLI session logs, and the documented generic JSON format, each with a synthetic fixture and tests; Cursor path documented (generic format / usage-export mapping, or stated as unavailable).
-- [ ] `bun run typecheck`, `bun run build`, and `bun test` pass; tests cover TTL state machine, cost/ping math, config validation (non-unknown values need a source), and each import adapter.
-- [ ] `apps/cache-warmth-lab/README.md`: run steps, what each panel shows, provider-data policy (as-of, sources, unknowns, edit/reset), import formats, credit + link to @dani_avila7's post, link to harness-token-lab (PR #4), clearly a simulation.
-- [ ] This PLAN.md committed verbatim as the first commit; boxes ticked in a final commit.
-- [ ] Exactly one PR against `main`, titled like `feat(cache-warmth-lab): provider-agnostic prompt-cache timer`, body embeds at least one screenshot of the side-by-side replay AND a short screen-recording video of the core loop (pick providers → replay → TTL bars refill/drain → nudge → cost + rate-limit panels → import a fixture). Media under `apps/cache-warmth-lab/artifacts/` and/or attached the Cursor cloud-agent way.
-- [ ] `git diff --name-only main...HEAD` lists only paths under `apps/cache-warmth-lab/`.
+- [x] `cd apps/cache-warmth-lab && bun install && bun run dev` starts with no env vars, no API key, and works offline.
+- [x] ≥4 provider profiles (Anthropic/Claude Code, OpenAI/Codex, Cursor, xAI/Grok) in one editable cache-rule config with per-field source links and a visible `asOf` date; unknown fields shown as `unknown` and editable; edits persist; reset restores shipped defaults. Shipped values were verified via web research at build time (sources in config + README).
+- [x] The sample session replays side by side across the selected providers with live TTL bars that refill on every turn and drain during idle gaps; speed control and play/pause/step work.
+- [x] Pre-expiry nudge fires a browser Notification when permitted, and an in-page fallback when not.
+- [x] Cost panel shows warm vs cold totals per provider and a keep-warm-ping vs re-write what-if for the ~7-minute break, with break-even; flags results that depend on unknown values.
+- [x] Rate-limit view answers per provider whether cache reads count (`yes`/`no`/`partial`/`unknown` + source) and shows tokens-against-limit for the session.
+- [x] Transcript import works for Claude Code JSONL, Codex CLI session logs, and the documented generic JSON format, each with a synthetic fixture and tests; Cursor path documented (generic format / usage-export mapping, or stated as unavailable).
+- [x] `bun run typecheck`, `bun run build`, and `bun test` pass; tests cover TTL state machine, cost/ping math, config validation (non-unknown values need a source), and each import adapter.
+- [x] `apps/cache-warmth-lab/README.md`: run steps, what each panel shows, provider-data policy (as-of, sources, unknowns, edit/reset), import formats, credit + link to @dani_avila7's post, link to harness-token-lab (PR #4), clearly a simulation.
+- [x] This PLAN.md committed verbatim as the first commit; boxes ticked in a final commit.
+- [x] Exactly one PR against `main`, titled like `feat(cache-warmth-lab): provider-agnostic prompt-cache timer`, body embeds at least one screenshot of the side-by-side replay AND a short screen-recording video of the core loop (pick providers → replay → TTL bars refill/drain → nudge → cost + rate-limit panels → import a fixture). Media under `apps/cache-warmth-lab/artifacts/` and/or attached the Cursor cloud-agent way.
+- [x] `git diff --name-only main...HEAD` lists only paths under `apps/cache-warmth-lab/`.

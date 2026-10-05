@@ -159,6 +159,17 @@ dd { margin: 0; }
 
 .stage h2, .stage .clock { color: var(--well-text); }
 
+.stage button {
+  color: var(--ink);
+  background: #fffaf2;
+}
+
+.stage button[aria-pressed="true"] {
+  background: var(--amber);
+  color: var(--ink);
+  border-color: var(--amber);
+}
+
 .clock { font-variant-numeric: tabular-nums; font-size: 1.4rem; margin: 0; }
 
 .transport { justify-content: flex-start; margin: 0.8rem 0; }
