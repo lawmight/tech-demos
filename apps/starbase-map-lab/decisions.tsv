@@ -1,0 +1,7 @@
+id	decision	why
+pad-coord	Vehicle centerline is 25.996142 N, -97.154559 W, 18 m east of OSM way 968227813.	The ticket seed 25.997 N, 97.157 W is the tank farm. The catch has to land on the orbital mount, checked against the integration tower and the flame trench.
+catch-point	Catch point is the mount centerline, not the tower mast. The tower mesh is offset west and that offset scales with model scale.	A mast 18 m west would fail the 5 m horizontal catch test. Scaling the offset keeps the chopsticks aimed at the booster at 1×, 10×, and 30×.
+profile	Round marks T+2:40 staging near 69 km, T+7:00 catch, T+8:30 ship cutoff. Downrange is compressed on a 97° azimuth.	These are public Flight 5 callouts, not a telemetry fit. The real ship went to the Indian Ocean; the demo keeps the arc over the Gulf.
+scale	Default model scale is 10×. Ship meshes get an along-nose lead of (scale−1)×booster height. Tower Y scale puts the arm pivot on the scaled catch pins.	True size disappears at coastline zoom. Uniform scale would bury the ship in the booster and leave the arms above the pins.
+matrix	Custom layer uses mainMatrix × translate(mercator) × scale(s,−s,s) × rotateX(π/2). Scene axes are east, up, south.	That is the MapLibre three.js custom-layer recipe, so the mesh stays glued to the same ground track as the camera.
+offline	Bundled style, no glyphs, notice text fixed. Triggers: ?offline=1, style not idle in 8s, or style failure before first idle.	The demo has to keep the flight and the controls when OpenFreeMap is blocked, without a blank canvas.
