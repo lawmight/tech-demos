@@ -84,9 +84,14 @@ export function createVehicleLayer(getFrame: () => Frame): CustomLayerInterface 
       });
       renderer.autoClear = false;
     },
-    render(_context, args) {
-      if (!renderer) return;
+    render(context, args) {
+      if (!renderer || !map) return;
       const frame = getFrame();
+      // Sky pixels can leave a depth value that hides a vehicle the camera is orbiting.
+      context.enable(context.DEPTH_TEST);
+      context.depthMask(true);
+      context.depthFunc(context.LEQUAL);
+      context.clear(context.DEPTH_BUFFER_BIT);
       placeComplex(rig, frame.modelScale);
       placeVehicle(rig.booster, frame.state.booster, frame.modelScale, 0, direction);
       placeVehicle(rig.ship, frame.state.ship, frame.modelScale, shipRenderLeadM(frame.modelScale), direction);

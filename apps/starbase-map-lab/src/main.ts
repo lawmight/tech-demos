@@ -1,18 +1,22 @@
 import {
   AttributionControl,
+  LngLat,
   Map,
   NavigationControl,
+  type LngLatLike,
   type StyleSpecification,
 } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import {
   AZIMUTH_DEG,
+  BOOSTER_HEIGHT_M,
   DEFAULT_MODEL_SCALE,
   LOOP_LENGTH_S,
   MODEL_SCALES,
   OPENFREEMAP_STYLE,
   PAD,
   PHASES,
+  SHIP_HEIGHT_M,
   SPEEDS,
 } from "./config/profile";
 import { destination } from "./lib/geo";
@@ -45,8 +49,7 @@ let mode: CameraMode = pickMode(params.get("cam"));
 let chaseTarget: ChaseTarget = params.get("chase") === "booster" ? "booster" : "ship";
 let scrubbing = false;
 let offline = forceOffline;
-let sawIdle = false;
-let tileErrors = 0;
+let sawStyle = forceOffline;
 let lastFrame = performance.now();
 
 const frame: Frame = { state: stateAt(t), modelScale };
@@ -84,18 +87,16 @@ map.on("style.load", () => {
 
 if (!forceOffline) {
   const timer = window.setTimeout(() => {
-    if (!sawIdle) enterOffline();
+    if (!sawStyle) enterOffline();
   }, 8000);
-  map.on("idle", () => {
-    sawIdle = true;
+  map.on("style.load", () => {
+    sawStyle = true;
     window.clearTimeout(timer);
   });
   map.on("error", (event) => {
-    if (offline) return;
-    tileErrors += 1;
+    if (offline || sawStyle) return;
     const message = event.error instanceof Error ? event.error.message : String(event.error);
-    const styleFailed = !map.isStyleLoaded() && /fail|style|ajax|fetch|network/i.test(message);
-    if (styleFailed || (!sawIdle && tileErrors >= 8)) enterOffline();
+    if (/style|ajax|fetch|network/i.test(message)) enterOffline();
   });
 } else {
   noticeEl.hidden = false;
@@ -118,7 +119,7 @@ function tick(now: number): void {
   frame.state = stateAt(t);
   frame.modelScale = modelScale;
   paintReadout(frame.state);
-  if (mode === "chase" && !map.isMoving()) followChase(dt);
+  if (mode === "chase" && !map.isMoving()) followChase();
   requestAnimationFrame(tick);
 }
 
@@ -178,6 +179,8 @@ function bindScales(): void {
     requiredButton(`#scale-${value}`).addEventListener("click", () => {
       modelScale = value;
       paintPressed();
+      if (mode === "chase") snapChase();
+      else applyCamera(false);
     });
   }
 }
@@ -196,6 +199,8 @@ function setChase(next: ChaseTarget): void {
 }
 
 function applyCamera(immediate: boolean): void {
+  // Without terrain, MapLibre zeroes center elevation every frame unless this is off.
+  map.setCenterClampedToGround(mode !== "chase");
   const view = cameraView(mode, frame.state);
   if (immediate || flyMs === 0) {
     map.jumpTo(view);
@@ -204,21 +209,9 @@ function applyCamera(immediate: boolean): void {
   map.flyTo({ ...view, duration: flyMs, essential: true });
 }
 
-function followChase(dt: number): void {
-  const view = cameraView("chase", frame.state);
-  const center = map.getCenter();
-  const currentBearing = map.getBearing();
-  const k = 1 - Math.exp(-4.2 * dt);
-  const bearingDelta = wrapDegrees(view.bearing - currentBearing);
-  map.jumpTo({
-    center: [
-      center.lng + (view.center[0] - center.lng) * k,
-      center.lat + (view.center[1] - center.lat) * k,
-    ],
-    zoom: map.getZoom() + (view.zoom - map.getZoom()) * k,
-    pitch: map.getPitch() + (view.pitch - map.getPitch()) * k,
-    bearing: currentBearing + bearingDelta * k,
-  });
+function followChase(): void {
+  map.setCenterClampedToGround(false);
+  map.jumpTo(cameraView("chase", frame.state));
 }
 
 function snapChase(): void {
@@ -226,37 +219,68 @@ function snapChase(): void {
   map.jumpTo(cameraView("chase", stateAt(t)));
 }
 
-function cameraView(which: CameraMode, flight: FlightState): {
+type CameraView = {
   center: [number, number];
   zoom: number;
   pitch: number;
   bearing: number;
-} {
+  elevation: number;
+};
+
+function cameraView(which: CameraMode, flight: FlightState): CameraView {
   if (which === "pad") {
-    return { center: [PAD.lng, PAD.lat], zoom: 16.7, pitch: 68, bearing: 55 };
+    return {
+      center: [PAD.lng, PAD.lat],
+      zoom: clamp(16.4 - Math.log2(Math.max(modelScale, 1)) * 0.72, 13.5, 17.15),
+      pitch: 64,
+      bearing: 48,
+      elevation: 48 * modelScale,
+    };
   }
   if (which === "coastline") {
-    const look = destination(PAD, 48_000, AZIMUTH_DEG);
-    return { center: [look.lng, look.lat], zoom: 7.45, pitch: 54, bearing: AZIMUTH_DEG };
+    const look = destination(PAD, 3_200, AZIMUTH_DEG);
+    return {
+      center: [look.lng, look.lat],
+      zoom: clamp(13.05 - Math.log2(Math.max(modelScale, 1)) * 0.22, 12.1, 13.6),
+      pitch: 61,
+      bearing: AZIMUTH_DEG - 18,
+      elevation: 160 + 42 * modelScale,
+    };
   }
   const vehicle = chaseTarget === "booster" ? flight.booster : flight.ship;
-  const lead =
-    chaseTarget === "ship"
-      ? shipRenderLeadM(modelScale) * Math.cos((vehicle.pitchDeg * Math.PI) / 180)
-      : 0;
-  const look = lead > 1 ? destination(vehicle, lead, AZIMUTH_DEG) : vehicle;
+  return chaseView(vehicle);
+}
+
+/** Look at the vehicle body. Elevation is the look-point altitude, so the mesh stays in frame at 70–190 km. */
+function chaseView(vehicle: VehicleState): CameraView {
+  const body = chaseTarget === "ship" ? SHIP_HEIGHT_M : BOOSTER_HEIGHT_M;
+  const lead = chaseTarget === "ship" ? shipRenderLeadM(modelScale) : 0;
+  const nose = (vehicle.pitchDeg * Math.PI) / 180;
+  const along = lead + body * modelScale * 0.4;
+  const look = destination(vehicle, Math.max(0, along * Math.cos(nose)), AZIMUTH_DEG);
+  const lookAlt = Math.max(20, vehicle.altitudeM + along * Math.sin(nose));
+  const span = Math.max(48, body * modelScale);
+  const cam = destination(look, span * 3.8, AZIMUTH_DEG + 168);
+  const solved = map.calculateCameraOptionsFromTo(
+    new LngLat(cam.lng, cam.lat),
+    lookAlt + span * 1.2,
+    new LngLat(look.lng, look.lat),
+    lookAlt,
+  );
+  const center = solved.center ? lngLatPair(solved.center) : ([look.lng, look.lat] as [number, number]);
   return {
-    center: [look.lng, look.lat],
-    zoom: chaseZoom(vehicle),
-    pitch: 62,
-    bearing: AZIMUTH_DEG,
+    center,
+    zoom: clamp(solved.zoom ?? 14, 6, 18.5),
+    pitch: clamp(solved.pitch ?? 52, 18, 78),
+    bearing: solved.bearing ?? AZIMUTH_DEG,
+    elevation: solved.elevation ?? lookAlt,
   };
 }
 
-function chaseZoom(vehicle: VehicleState): number {
-  const altitudeTerm = Math.log2(1 + vehicle.altitudeM / 2800);
-  const scaleTerm = Math.log2(modelScale) * 0.32;
-  return clamp(16.5 - altitudeTerm + scaleTerm, 8.8, 17.3);
+function lngLatPair(value: LngLatLike): [number, number] {
+  if (Array.isArray(value)) return [value[0] ?? 0, value[1] ?? 0];
+  if ("lng" in value) return [value.lng, value.lat];
+  return [value.lon, value.lat];
 }
 
 function paintReadout(flight: FlightState): void {
@@ -323,10 +347,6 @@ function pick<T extends number>(options: readonly T[], value: number, fallback: 
 function pickMode(value: string | null): CameraMode {
   if (value === "chase" || value === "coastline" || value === "pad") return value;
   return "pad";
-}
-
-function wrapDegrees(delta: number): number {
-  return ((delta + 540) % 360) - 180;
 }
 
 function clamp(value: number, min: number, max: number): number {

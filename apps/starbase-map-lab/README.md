@@ -68,8 +68,8 @@ Production JS from `bun run build` (Vite 8, minified, sourcemaps off):
 | --- | ---: | ---: |
 | `maplibre` | 1,027.79 kB | 273.00 kB |
 | `three` | 487.70 kB | 121.25 kB |
-| app | 19.63 kB | 7.70 kB |
-| **Total JS** | **1,535.12 kB** | **401.95 kB** |
+| app | 19.94 kB | 7.86 kB |
+| **Total JS** | **1,535.43 kB** | **402.11 kB** |
 
 That is about 1.54 MB minified, under the ~2.5 MB budget.
 
