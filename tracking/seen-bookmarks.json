@@ -140,6 +140,14 @@
       "status": "approved",
       "slug": "cache-warmth-lab",
       "reason": "Tom approved with tweak 2026-10-05: provider-agnostic (Claude Code, Codex, Cursor, Grok profiles; editable sourced cache-rule config); model grok-4.7 reasoning_effort xhigh, context 500k"
+    },
+    {
+      "id": "2107124149592428601",
+      "title": "Starships in Apple Maps (Evan Bacon) - 3D models on a live map",
+      "url": "https://x.com/Baconbrix/status/2107124149592428601",
+      "date": "2026-10-06",
+      "status": "proposed",
+      "slug": "starbase-map-lab"
     }
   ],
   "built": []
