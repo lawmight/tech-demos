@@ -46,7 +46,9 @@ The camera projection is the map's `defaultProjectionData.mainMatrix` times that
 
 `stateAt(t)` in `src/lib/profile.ts` is the only flight model. The map, the cameras, and the meshes read it. Phase times live in `src/config/profile.ts`. Scrubbing and playback both call that function, so the vehicles, the arms, and the chase camera cannot disagree.
 
-The offline path swaps in a style with no glyphs and no remote URLs: a flat water background, a hand-drawn Boca Chica polygon, and a pad dot. The custom layer is reattached on `style.load`. The notice reads `map tiles unavailable — offline fallback`. The same path runs when `?offline=1` is set, when the style has not idled within 8 seconds, or when the style fails before the first idle.
+Chase uses `calculateCameraOptionsFromTo` to look at the vehicle body, including its altitude. MapLibre otherwise pins the center back to the ground every frame when there is no terrain, which would leave a booster at 70 km above the frame. Chase turns that clamp off. Pad and coastline leave it on and frame the pad from the ground.
+
+The offline path swaps in a style with no glyphs and no remote URLs: a flat water background, a hand-drawn Boca Chica polygon, and a pad dot. The custom layer is reattached on `style.load`. The notice reads `map tiles unavailable — offline fallback`. The same path runs when `?offline=1` is set, when the style has not loaded within 8 seconds, or when a style or network error arrives before that load.
 
 ## The profile is approximate
 
