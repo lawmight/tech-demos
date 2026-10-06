@@ -146,8 +146,9 @@
       "title": "Starships in Apple Maps (Evan Bacon) - 3D models on a live map",
       "url": "https://x.com/Baconbrix/status/2107124149592428601",
       "date": "2026-10-06",
-      "status": "proposed",
-      "slug": "starbase-map-lab"
+      "status": "approved",
+      "slug": "starbase-map-lab",
+      "reason": "Tom approved 2026-10-06: web MapLibre + OpenFreeMap + three.js Starship/booster-catch loop at Starbase; model grok-4.7 reasoning_effort xhigh"
     }
   ],
   "built": []
