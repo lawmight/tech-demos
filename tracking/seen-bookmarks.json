@@ -155,8 +155,9 @@
       "title": "Mistral Large 4 (Le Chonk) visual grounding lab",
       "url": "https://x.com/MistralAI/status/2107457414387622310",
       "date": "2026-10-07",
+      "status": "approved",
       "slug": "le-chonk-grounding-lab",
-      "status": "proposed"
+      "reason": "Tom approved 2026-10-07: Mistral Large 4 visual grounding (image + 'where is X' -> bounding boxes + per-box reasoning), BYO-key live mode (default Vercel AI Gateway; Mistral API direct + OpenRouter via provider switcher) + no-key replay mode; model grok-4.7 reasoning_effort medium, non-fast, context 500k"
     }
   ],
   "built": []
