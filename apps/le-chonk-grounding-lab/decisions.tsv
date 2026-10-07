@@ -1,0 +1,9 @@
+when	decision	because
+2026-10-07	Commit PLAN.md verbatim before any app code	Ticket first step
+2026-10-07	Default live provider is Vercel AI Gateway model mistral/mistral-large-4	No confirmed free host; ticket provider rule
+2026-10-07	Ship Mistral direct and OpenRouter as sibling adapters	Ticket requires three providers behind one interface
+2026-10-07	Replay mode is the default and uses synthetic fixtures	No API keys in this build; do not call paid APIs
+2026-10-07	Ask for normalized 0-1000 xyxy boxes	Mistral launch post and model card (checked 2026-10-07) describe visual grounding but do not document a box convention
+2026-10-07	Keep the free-tier verdict as not free	Gateway catalog still prices Large 4 at $0.68/$2.09 per 1M; public model object no longer has availableToFreeTier; pricing docs still limit the $5 credit to a subset
+2026-10-07	Vanilla TypeScript, no provider SDKs	Lean bundle and plain fetch through a local dev proxy
+2026-10-07	Original CC0 sample drawings	Avoid unclear third-party image licenses

@@ -1,0 +1,47 @@
+{
+  "id": "park-tree-bench",
+  "provider": "vercel",
+  "model": "mistral/mistral-large-4",
+  "query": "Where are the tree and the bench?",
+  "imageId": "park",
+  "rawResponse": {
+    "id": "synthetic-park-tree-bench",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\"boxes\":[{\"label\":\"tree\",\"box_2d\":[40,80,360,780],\"confidence\":0.95,\"reasoning\":\"A brown trunk rises into a round green canopy on the left. The whole shape is the tree.\"},{\"label\":\"bench\",\"box_2d\":[390,560,780,740],\"confidence\":0.89,\"reasoning\":\"Horizontal wooden slats on two legs sit in the middle ground. That is the bench.\"}],\"coordinate_space\":\"normalized_1000\"}"
+        }
+      }
+    ]
+  },
+  "parsed": {
+    "boxes": [
+      {
+        "label": "tree",
+        "box_2d": [
+          40,
+          80,
+          360,
+          780
+        ],
+        "confidence": 0.95,
+        "reasoning": "A brown trunk rises into a round green canopy on the left. The whole shape is the tree."
+      },
+      {
+        "label": "bench",
+        "box_2d": [
+          390,
+          560,
+          780,
+          740
+        ],
+        "confidence": 0.89,
+        "reasoning": "Horizontal wooden slats on two legs sit in the middle ground. That is the bench."
+      }
+    ],
+    "coordinate_space": "normalized_1000"
+  },
+  "recordedAt": "2026-10-07T16:00:00.000Z",
+  "source": "synthetic"
+}

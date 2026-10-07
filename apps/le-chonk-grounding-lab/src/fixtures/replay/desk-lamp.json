@@ -1,0 +1,36 @@
+{
+  "id": "desk-lamp",
+  "provider": "vercel",
+  "model": "mistral/mistral-large-4",
+  "query": "Where is the lamp?",
+  "imageId": "desk",
+  "rawResponse": {
+    "id": "synthetic-desk-lamp",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\"boxes\":[{\"label\":\"lamp\",\"box_2d\":[70,140,300,700],\"confidence\":0.91,\"reasoning\":\"A brass stand and a wide shade occupy the left of the desk, with a warm glow under the shade. That is the lamp.\"}],\"coordinate_space\":\"normalized_1000\"}"
+        }
+      }
+    ]
+  },
+  "parsed": {
+    "boxes": [
+      {
+        "label": "lamp",
+        "box_2d": [
+          70,
+          140,
+          300,
+          700
+        ],
+        "confidence": 0.91,
+        "reasoning": "A brass stand and a wide shade occupy the left of the desk, with a warm glow under the shade. That is the lamp."
+      }
+    ],
+    "coordinate_space": "normalized_1000"
+  },
+  "recordedAt": "2026-10-07T16:00:00.000Z",
+  "source": "synthetic"
+}
