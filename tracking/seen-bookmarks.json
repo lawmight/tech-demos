@@ -158,6 +158,18 @@
       "status": "approved",
       "slug": "le-chonk-grounding-lab",
       "reason": "Tom approved 2026-10-07: Mistral Large 4 visual grounding (image + 'where is X' -> bounding boxes + per-box reasoning), BYO-key live mode (default Vercel AI Gateway; Mistral API direct + OpenRouter via provider switcher) + no-key replay mode; model grok-4.7 reasoning_effort medium, non-fast, context 500k"
+    },
+    {
+      "id": "2107558218629288035",
+      "title": "Tweetcraft: Minecraft inside a tweet with working multiplayer (jaivinwylde)",
+      "url": "https://x.com/jaivinwylde/status/2107558218629288035",
+      "date": "2026-10-08",
+      "status": "proposed",
+      "slug": "tweet-embed-world-lab",
+      "related_ids": [
+        "2107815963269685485",
+        "2107977332904628298"
+      ]
     }
   ],
   "built": []
