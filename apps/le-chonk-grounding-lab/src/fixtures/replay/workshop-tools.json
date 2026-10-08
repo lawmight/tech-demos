@@ -1,0 +1,47 @@
+{
+  "id": "workshop-tools",
+  "provider": "vercel",
+  "model": "mistral/mistral-large-4",
+  "query": "Where are the hammer and the wrench?",
+  "imageId": "workshop",
+  "rawResponse": {
+    "id": "synthetic-workshop-tools",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\"boxes\":[{\"label\":\"hammer\",\"box_2d\":[80,160,300,680],\"confidence\":0.94,\"reasoning\":\"A long wooden handle ends in a dark metal head on the left of the pegboard. That tool is the hammer.\"},{\"label\":\"wrench\",\"box_2d\":[360,210,560,670],\"confidence\":0.87,\"reasoning\":\"A slim metal bar with open jaws near the top hangs in the middle. The jaws make it a wrench.\"}],\"coordinate_space\":\"normalized_1000\"}"
+        }
+      }
+    ]
+  },
+  "parsed": {
+    "boxes": [
+      {
+        "label": "hammer",
+        "box_2d": [
+          80,
+          160,
+          300,
+          680
+        ],
+        "confidence": 0.94,
+        "reasoning": "A long wooden handle ends in a dark metal head on the left of the pegboard. That tool is the hammer."
+      },
+      {
+        "label": "wrench",
+        "box_2d": [
+          360,
+          210,
+          560,
+          670
+        ],
+        "confidence": 0.87,
+        "reasoning": "A slim metal bar with open jaws near the top hangs in the middle. The jaws make it a wrench."
+      }
+    ],
+    "coordinate_space": "normalized_1000"
+  },
+  "recordedAt": "2026-10-07T16:00:00.000Z",
+  "source": "synthetic"
+}

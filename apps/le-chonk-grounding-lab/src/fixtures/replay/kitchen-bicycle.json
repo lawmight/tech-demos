@@ -1,0 +1,25 @@
+{
+  "id": "kitchen-bicycle",
+  "provider": "vercel",
+  "model": "mistral/mistral-large-4",
+  "query": "Where is the bicycle?",
+  "imageId": "kitchen",
+  "rawResponse": {
+    "id": "synthetic-kitchen-bicycle",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\"boxes\":[],\"coordinate_space\":\"normalized_1000\",\"notes\":\"Nothing in the kitchen matches a bicycle.\"}"
+        }
+      }
+    ]
+  },
+  "parsed": {
+    "boxes": [],
+    "coordinate_space": "normalized_1000",
+    "notes": "Nothing in the kitchen matches a bicycle."
+  },
+  "recordedAt": "2026-10-07T16:00:00.000Z",
+  "source": "synthetic"
+}
