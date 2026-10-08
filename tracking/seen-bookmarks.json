@@ -164,12 +164,13 @@
       "title": "Tweetcraft: Minecraft inside a tweet with working multiplayer (jaivinwylde)",
       "url": "https://x.com/jaivinwylde/status/2107558218629288035",
       "date": "2026-10-08",
-      "status": "proposed",
+      "status": "skipped",
       "slug": "tweet-embed-world-lab",
       "related_ids": [
         "2107815963269685485",
         "2107977332904628298"
-      ]
+      ],
+      "reason": "Tom played the original; not worth rebuilding"
     }
   ],
   "built": []
