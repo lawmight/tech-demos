@@ -14,7 +14,8 @@
       "url": "https://x.com/shubgaur/status/2092375056089563604",
       "date": "2026-09-01",
       "status": "approved",
-      "slug": "fal-self-animate"
+      "slug": "fal-self-animate",
+      "reason": "PR #1 open; first-run reconcile 2026-10-12"
     },
     {
       "id": "2094515104670715940",
@@ -30,24 +31,27 @@
       "title": "Daytona sandboxes for Cursor Self-Hosted Machines",
       "url": "https://x.com/daytonaio/status/2095260582064672966",
       "date": "2026-09-03",
-      "status": "proposed",
-      "slug": "daytona-sandbox-lab"
+      "status": "approved",
+      "slug": "daytona-sandbox-lab",
+      "reason": "PR #2 open; first-run reconcile 2026-10-12 (was stale proposed)"
     },
     {
       "id": "2097930608790167907",
       "title": "DeepSeek-V4.1-Flash",
       "url": "https://x.com/deepseek_ai/status/2097930608790167907",
       "date": "2026-09-14",
-      "status": "proposed",
-      "slug": "deepseek-flash-vision"
+      "status": "skipped",
+      "slug": "deepseek-flash-vision",
+      "reason": "stale proposed with no PR; first-run reconcile 2026-10-12 treat as dead"
     },
     {
       "id": "2100681226143092875",
       "title": "Bend 2",
       "url": "https://x.com/VictorTaelin/status/2100681226143092875",
       "date": "2026-09-18",
-      "status": "proposed",
-      "slug": "bend2-sticky"
+      "status": "built",
+      "slug": "bend-sticky",
+      "reason": "PR #3 merged 2026-09-18; first-run reconcile 2026-10-12"
     },
     {
       "id": "2101544156757950697",
@@ -90,7 +94,7 @@
       "related_ids": [
         "2102786814633464159"
       ],
-      "reason": "Tom: approve (2026-09-25)"
+      "reason": "Tom: approve (2026-09-25); PR #4 open"
     },
     {
       "id": "2098162488013455784",
@@ -99,7 +103,7 @@
       "date": "2026-09-29",
       "status": "approved",
       "slug": "projects-coordinator-lab",
-      "reason": "Tom approved 2026-09-29 10:18 CST; build model Sonnet 5.5 (Tom-named)"
+      "reason": "Tom approved 2026-09-29 10:18 CST; build model Sonnet 5.5 (Tom-named); PR #5 open"
     },
     {
       "id": "2104997619152130278",
@@ -112,7 +116,7 @@
         "2104997734294139151",
         "2104997759673922033"
       ],
-      "reason": "Tom approved 2026-09-30; build model Grok 4.7 (Tom-named)"
+      "reason": "Tom approved 2026-09-30; build model Grok 4.7 (Tom-named); PR #6 open"
     },
     {
       "id": "2105372125288976402",
@@ -121,7 +125,7 @@
       "date": "2026-10-01",
       "status": "approved",
       "slug": "slow-assistant-lab",
-      "reason": "Tom approved 2026-10-01 via Sys; Pi + offline + optional HF; model Claude Opus 5.5"
+      "reason": "Tom approved 2026-10-01 via Sys; Pi + offline + optional HF; model Claude Opus 5.5; PR #7 open"
     },
     {
       "id": "2105359599234855405",
@@ -130,7 +134,7 @@
       "date": "2026-10-01",
       "status": "approved",
       "slug": "game-builder-lab",
-      "reason": "Tom approved 2026-10-01; puzzle-platformer homage (Fireboy/Watergirl spirit); model Claude Sonnet 5.5"
+      "reason": "Tom approved 2026-10-01; puzzle-platformer homage; model Claude Sonnet 5.5; PR #8 open"
     },
     {
       "id": "2106455605925822967",
@@ -139,7 +143,7 @@
       "date": "2026-10-05",
       "status": "approved",
       "slug": "cache-warmth-lab",
-      "reason": "Tom approved with tweak 2026-10-05: provider-agnostic (Claude Code, Codex, Cursor, Grok profiles; editable sourced cache-rule config); model grok-4.7 reasoning_effort xhigh, context 500k"
+      "reason": "Tom approved with tweak 2026-10-05; model grok-4.7 xhigh 500k; PR #10 open"
     },
     {
       "id": "2107124149592428601",
@@ -148,7 +152,7 @@
       "date": "2026-10-06",
       "status": "approved",
       "slug": "starbase-map-lab",
-      "reason": "Tom approved 2026-10-06: web MapLibre + OpenFreeMap + three.js Starship/booster-catch loop at Starbase; model grok-4.7 reasoning_effort xhigh"
+      "reason": "Tom approved 2026-10-06; model grok-4.7 xhigh; PR #11 open"
     },
     {
       "id": "2107457414387622310",
@@ -157,7 +161,7 @@
       "date": "2026-10-07",
       "status": "approved",
       "slug": "le-chonk-grounding-lab",
-      "reason": "Tom approved 2026-10-07: Mistral Large 4 visual grounding (image + 'where is X' -> bounding boxes + per-box reasoning), BYO-key live mode (default Vercel AI Gateway; Mistral API direct + OpenRouter via provider switcher) + no-key replay mode; model grok-4.7 reasoning_effort medium, non-fast, context 500k"
+      "reason": "Tom approved 2026-10-07; model grok-4.7 medium non-fast 500k; PR #12 open"
     },
     {
       "id": "2107558218629288035",
@@ -173,5 +177,16 @@
       "reason": "Tom played the original; not worth rebuilding"
     }
   ],
-  "built": []
+  "built": [
+    {
+      "id": "2100681226143092875",
+      "title": "Bend 2",
+      "url": "https://x.com/VictorTaelin/status/2100681226143092875",
+      "date": "2026-09-18",
+      "slug": "bend-sticky",
+      "pr": 3,
+      "merged": "2026-09-18",
+      "reason": "PR #3 merged; first-run reconcile 2026-10-12"
+    }
+  ]
 }
