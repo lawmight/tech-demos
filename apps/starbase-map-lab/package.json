@@ -1,0 +1,23 @@
+{
+  "name": "starbase-map-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5191",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 5191",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "maplibre-gl": "^5.15.0",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2",
+    "@types/three": "0.180.0",
+    "typescript": "^5.9.2",
+    "vite": "^8.3.1"
+  }
+}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Starbase Map Lab</title>
+  </head>
+  <body>
+    <div id="map"></div>
+    <header class="top">
+      <p class="mark">Starbase Map Lab</p>
+      <ul class="rules">
+        <li>Stylized simulation, not telemetry</li>
+        <li>No API key; map tiles need network (offline fallback included)</li>
+        <li>Not affiliated with SpaceX, Apple or Evan Bacon</li>
+      </ul>
+      <p id="notice" class="notice" role="status" hidden>
+        map tiles unavailable — offline fallback
+      </p>
+    </header>
+    <section class="readout" aria-live="polite">
+      <p id="phase" class="phase">Countdown</p>
+      <p id="clock" class="clock">T-0:12</p>
+    </section>
+    <section class="dock" aria-label="Cameras and model scale">
+      <div class="group">
+        <span class="label">Camera</span>
+        <div class="row">
+          <button id="cam-pad" type="button" aria-pressed="true">Pad</button>
+          <button id="cam-chase" type="button" aria-pressed="false">Chase</button>
+          <button id="cam-coast" type="button" aria-pressed="false">Coastline</button>
+        </div>
+      </div>
+      <div class="group" id="chase-toggle">
+        <span class="label">Chase</span>
+        <div class="row">
+          <button id="chase-ship" type="button" aria-pressed="true">Ship</button>
+          <button id="chase-booster" type="button" aria-pressed="false">Booster</button>
+        </div>
+      </div>
+      <div class="group">
+        <span class="label">Model scale</span>
+        <div class="row">
+          <button id="scale-1" type="button" aria-pressed="false">1×</button>
+          <button id="scale-10" type="button" aria-pressed="true">10×</button>
+          <button id="scale-30" type="button" aria-pressed="false">30×</button>
+        </div>
+      </div>
+    </section>
+    <footer class="timeline">
+      <button id="play" type="button" aria-pressed="true">Pause</button>
+      <div class="scrub">
+        <div id="ticks" class="ticks"></div>
+        <input id="scrub" type="range" min="0" max="552" step="0.05" value="0" aria-label="Timeline" />
+      </div>
+      <div class="row speeds" role="group" aria-label="Speed">
+        <button id="speed-1" type="button" aria-pressed="true">1×</button>
+        <button id="speed-5" type="button" aria-pressed="false">5×</button>
+        <button id="speed-20" type="button" aria-pressed="false">20×</button>
+        <button id="speed-60" type="button" aria-pressed="false">60×</button>
+      </div>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
