@@ -1,0 +1,25 @@
+{
+  "id": "park-train",
+  "provider": "vercel",
+  "model": "mistral/mistral-large-4",
+  "query": "Where is the train?",
+  "imageId": "park",
+  "rawResponse": {
+    "id": "synthetic-park-train",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\"boxes\":[],\"coordinate_space\":\"normalized_1000\",\"notes\":\"The park scene has no train.\"}"
+        }
+      }
+    ]
+  },
+  "parsed": {
+    "boxes": [],
+    "coordinate_space": "normalized_1000",
+    "notes": "The park scene has no train."
+  },
+  "recordedAt": "2026-10-07T16:00:00.000Z",
+  "source": "synthetic"
+}

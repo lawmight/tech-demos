@@ -1,0 +1,36 @@
+{
+  "id": "workshop-hammer",
+  "provider": "vercel",
+  "model": "mistral/mistral-large-4",
+  "query": "Where is the hammer?",
+  "imageId": "workshop",
+  "rawResponse": {
+    "id": "synthetic-workshop-hammer",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\"boxes\":[{\"label\":\"hammer\",\"box_2d\":[80,160,300,680],\"confidence\":0.94,\"reasoning\":\"A long wooden handle ends in a dark metal head on the left of the pegboard. That tool is the hammer.\"}],\"coordinate_space\":\"normalized_1000\"}"
+        }
+      }
+    ]
+  },
+  "parsed": {
+    "boxes": [
+      {
+        "label": "hammer",
+        "box_2d": [
+          80,
+          160,
+          300,
+          680
+        ],
+        "confidence": 0.94,
+        "reasoning": "A long wooden handle ends in a dark metal head on the left of the pegboard. That tool is the hammer."
+      }
+    ],
+    "coordinate_space": "normalized_1000"
+  },
+  "recordedAt": "2026-10-07T16:00:00.000Z",
+  "source": "synthetic"
+}

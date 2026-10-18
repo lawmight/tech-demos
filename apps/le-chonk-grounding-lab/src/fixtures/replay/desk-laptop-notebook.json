@@ -1,0 +1,47 @@
+{
+  "id": "desk-laptop-notebook",
+  "provider": "vercel",
+  "model": "mistral/mistral-large-4",
+  "query": "Where are the laptop and the notebook?",
+  "imageId": "desk",
+  "rawResponse": {
+    "id": "synthetic-desk-laptop-notebook",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\"boxes\":[{\"label\":\"laptop\",\"box_2d\":[340,360,680,660],\"confidence\":0.92,\"reasoning\":\"The hinged screen and flat keyboard deck in the middle of the desk form an open laptop.\"},{\"label\":\"notebook\",\"box_2d\":[720,480,930,700],\"confidence\":0.84,\"reasoning\":\"A cream page block with a red ribbon sits to the right of the laptop. It reads as a closed notebook, not the screen.\"}],\"coordinate_space\":\"normalized_1000\"}"
+        }
+      }
+    ]
+  },
+  "parsed": {
+    "boxes": [
+      {
+        "label": "laptop",
+        "box_2d": [
+          340,
+          360,
+          680,
+          660
+        ],
+        "confidence": 0.92,
+        "reasoning": "The hinged screen and flat keyboard deck in the middle of the desk form an open laptop."
+      },
+      {
+        "label": "notebook",
+        "box_2d": [
+          720,
+          480,
+          930,
+          700
+        ],
+        "confidence": 0.84,
+        "reasoning": "A cream page block with a red ribbon sits to the right of the laptop. It reads as a closed notebook, not the screen."
+      }
+    ],
+    "coordinate_space": "normalized_1000"
+  },
+  "recordedAt": "2026-10-07T16:00:00.000Z",
+  "source": "synthetic"
+}

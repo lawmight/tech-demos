@@ -1,0 +1,19 @@
+{
+  "name": "le-chonk-grounding-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "record": "bun run scripts/record.ts",
+    "render-samples": "bun run scripts/render-samples.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  }
+}

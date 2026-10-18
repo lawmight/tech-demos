@@ -1,0 +1,48 @@
+{
+  "id": "kitchen-mugs",
+  "provider": "vercel",
+  "model": "mistral/mistral-large-4",
+  "query": "Where are the mugs?",
+  "imageId": "kitchen",
+  "rawResponse": {
+    "id": "synthetic-kitchen-mugs",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\"boxes\":[{\"label\":\"red mug\",\"box_2d\":[400,470,540,680],\"confidence\":0.9,\"reasoning\":\"A red cup with a handle stands just right of center on the counter. The color and open top mark it as a mug.\"},{\"label\":\"blue mug\",\"box_2d\":[570,500,710,690],\"confidence\":0.88,\"reasoning\":\"A second cup, this one blue, sits further right at the same counter height. It is separate from the red mug.\"}],\"coordinate_space\":\"normalized_1000\",\"notes\":\"Two mugs share the counter.\"}"
+        }
+      }
+    ]
+  },
+  "parsed": {
+    "boxes": [
+      {
+        "label": "red mug",
+        "box_2d": [
+          400,
+          470,
+          540,
+          680
+        ],
+        "confidence": 0.9,
+        "reasoning": "A red cup with a handle stands just right of center on the counter. The color and open top mark it as a mug."
+      },
+      {
+        "label": "blue mug",
+        "box_2d": [
+          570,
+          500,
+          710,
+          690
+        ],
+        "confidence": 0.88,
+        "reasoning": "A second cup, this one blue, sits further right at the same counter height. It is separate from the red mug."
+      }
+    ],
+    "coordinate_space": "normalized_1000",
+    "notes": "Two mugs share the counter."
+  },
+  "recordedAt": "2026-10-07T16:00:00.000Z",
+  "source": "synthetic"
+}

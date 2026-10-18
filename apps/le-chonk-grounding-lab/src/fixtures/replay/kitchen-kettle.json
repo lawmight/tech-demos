@@ -1,0 +1,36 @@
+{
+  "id": "kitchen-kettle",
+  "provider": "vercel",
+  "model": "mistral/mistral-large-4",
+  "query": "Where is the kettle?",
+  "imageId": "kitchen",
+  "rawResponse": {
+    "id": "synthetic-kitchen-kettle",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\"boxes\":[{\"label\":\"kettle\",\"box_2d\":[90,330,340,640],\"confidence\":0.93,\"reasoning\":\"The dark rounded body, short spout, and loop handle sit on the left of the counter. That silhouette matches a kettle rather than the cups beside it.\"}],\"coordinate_space\":\"normalized_1000\"}"
+        }
+      }
+    ]
+  },
+  "parsed": {
+    "boxes": [
+      {
+        "label": "kettle",
+        "box_2d": [
+          90,
+          330,
+          340,
+          640
+        ],
+        "confidence": 0.93,
+        "reasoning": "The dark rounded body, short spout, and loop handle sit on the left of the counter. That silhouette matches a kettle rather than the cups beside it."
+      }
+    ],
+    "coordinate_space": "normalized_1000"
+  },
+  "recordedAt": "2026-10-07T16:00:00.000Z",
+  "source": "synthetic"
+}

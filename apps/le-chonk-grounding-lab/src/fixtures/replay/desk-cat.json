@@ -1,0 +1,25 @@
+{
+  "id": "desk-cat",
+  "provider": "vercel",
+  "model": "mistral/mistral-large-4",
+  "query": "Where is the cat?",
+  "imageId": "desk",
+  "rawResponse": {
+    "id": "synthetic-desk-cat",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\"boxes\":[],\"coordinate_space\":\"normalized_1000\",\"notes\":\"No animal is on the desk.\"}"
+        }
+      }
+    ]
+  },
+  "parsed": {
+    "boxes": [],
+    "coordinate_space": "normalized_1000",
+    "notes": "No animal is on the desk."
+  },
+  "recordedAt": "2026-10-07T16:00:00.000Z",
+  "source": "synthetic"
+}

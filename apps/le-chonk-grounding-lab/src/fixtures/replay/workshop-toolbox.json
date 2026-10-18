@@ -1,0 +1,36 @@
+{
+  "id": "workshop-toolbox",
+  "provider": "vercel",
+  "model": "mistral/mistral-large-4",
+  "query": "Where is the toolbox?",
+  "imageId": "workshop",
+  "rawResponse": {
+    "id": "synthetic-workshop-toolbox",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\"boxes\":[{\"label\":\"toolbox\",\"box_2d\":[620,430,920,710],\"confidence\":0.9,\"reasoning\":\"A red box with a silver latch and a top handle rests at the lower right. It is the toolbox, not one of the hanging tools.\"}],\"coordinate_space\":\"normalized_1000\"}"
+        }
+      }
+    ]
+  },
+  "parsed": {
+    "boxes": [
+      {
+        "label": "toolbox",
+        "box_2d": [
+          620,
+          430,
+          920,
+          710
+        ],
+        "confidence": 0.9,
+        "reasoning": "A red box with a silver latch and a top handle rests at the lower right. It is the toolbox, not one of the hanging tools."
+      }
+    ],
+    "coordinate_space": "normalized_1000"
+  },
+  "recordedAt": "2026-10-07T16:00:00.000Z",
+  "source": "synthetic"
+}

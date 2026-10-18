@@ -1,0 +1,36 @@
+{
+  "id": "park-dog",
+  "provider": "vercel",
+  "model": "mistral/mistral-large-4",
+  "query": "Where is the dog?",
+  "imageId": "park",
+  "rawResponse": {
+    "id": "synthetic-park-dog",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\"boxes\":[{\"label\":\"dog\",\"box_2d\":[640,450,920,650],\"confidence\":0.9,\"reasoning\":\"A tan body, darker ear, and a curled tail sit in front of the bench. The pose is a sitting dog.\"}],\"coordinate_space\":\"normalized_1000\"}"
+        }
+      }
+    ]
+  },
+  "parsed": {
+    "boxes": [
+      {
+        "label": "dog",
+        "box_2d": [
+          640,
+          450,
+          920,
+          650
+        ],
+        "confidence": 0.9,
+        "reasoning": "A tan body, darker ear, and a curled tail sit in front of the bench. The pose is a sitting dog."
+      }
+    ],
+    "coordinate_space": "normalized_1000"
+  },
+  "recordedAt": "2026-10-07T16:00:00.000Z",
+  "source": "synthetic"
+}
