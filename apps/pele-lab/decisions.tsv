@@ -1,0 +1,7 @@
+ts	phase	decision	why	evidence	result
+2026-10-22T22:40:00Z	start	Opened Pele Lab on cursor/pele-lab-f267 and committed PLAN.md first	The ticket required that file as the first commit, copied verbatim	46dcb33	PLAN.md committed
+2026-10-22T22:48:00Z	design	Kept themes and presets as two tables and called mount only when source changes	A theme switch should change CSS variables and leave the parsed SVG alone	apps/pele-lab/src/lib/themes.ts	tests green
+2026-10-22T22:50:00Z	design	Used one flat agentflow with eight nodes	Tom, Code, Studio, Leelhouse, Sys, CoS, GitHub, and LLM stay at or under 12 nodes and Pele accepts the source	apps/pele-lab/src/lib/presets.ts	render ok
+2026-10-22T22:55:00Z	verify	Confirmed Ink sets --pele-bg to rgb(16, 15, 15) and the SVG markup stays identical	Color changes must not re-parse	/tmp/pw-check/check.mjs	pass
+2026-10-22T23:10:00Z	review	Comment review found no comments to delete	The source had no narration or lint suppressions	bc-be54bcd8-c527-5e51-baaf-1fe557d70e8a	0 deletions
+2026-10-22T23:32:00Z	proof	Recorded a 27s pass of edit, Ink, Ember, then the village agentflow	The ticket asks for a screenshot and a short video of the running UI	apps/pele-lab/artifacts/playground-demo.mp4	saved

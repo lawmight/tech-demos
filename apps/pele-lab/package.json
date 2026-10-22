@@ -1,0 +1,19 @@
+{
+  "name": "pele-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build": "vite build",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "pele": "^1.8.0"
+  },
+  "devDependencies": {
+    "bun-types": "^1.3.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.4"
+  }
+}

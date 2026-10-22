@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pele Lab</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div>
+        <p class="kicker">Pele Lab</p>
+        <h1>Mermaid in. SVG out.</h1>
+      </div>
+      <p class="rules">
+        Pele, not Mermaid.js.
+        <a href="https://pele.run/">pele.run</a>
+        ·
+        <a href="https://github.com/obsidianmd/pele">Obsidian</a>.
+        No API key.
+      </p>
+    </header>
+    <main>
+      <section class="pane editor-pane" aria-labelledby="source-heading">
+        <div class="pane-head">
+          <h2 id="source-heading">Source</h2>
+          <div id="presets" class="chips" role="group" aria-label="Diagram presets"></div>
+        </div>
+        <label class="sr-only" for="source">Mermaid source</label>
+        <textarea id="source" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+        <p id="hint" class="hint"></p>
+      </section>
+      <section class="pane preview-pane" aria-labelledby="preview-heading">
+        <div class="pane-head">
+          <h2 id="preview-heading">Preview</h2>
+          <div id="themes" class="chips" role="group" aria-label="CSS variable themes"></div>
+        </div>
+        <p id="error" class="error" role="alert"></p>
+        <p id="theme-note" class="hint">Colors come from CSS variables. Switching theme does not re-parse.</p>
+        <div id="stage" class="stage pele" data-theme="day"></div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
