@@ -20,13 +20,13 @@ Bun + Vite + TypeScript, `pele` as the diagram dependency. Plain CSS. Pure helpe
 
 ## DONE-LOOKS-LIKE
 
-- [ ] `cd apps/pele-lab && bun install && bun run dev` starts with no env vars / API key.
-- [ ] Edit Mermaid → live SVG updates (≤300ms debounce).
-- [ ] ≥3 CSS-variable themes switch without installing Mermaid.js.
-- [ ] ≥4 presets load: flowchart, sequence, state, agentflow (village).
-- [ ] `pele` is a dependency; Mermaid.js is not.
-- [ ] `bun run typecheck`, `bun run build`, `bun test` pass.
-- [ ] README: run steps, Pele vs Mermaid.js, theming, credits + links.
-- [ ] This PLAN.md first commit; boxes ticked in a final commit.
-- [ ] One PR with screenshot AND short video of the running UI.
-- [ ] `git diff --name-only main...HEAD` only under `apps/pele-lab/`.
+- [x] `cd apps/pele-lab && bun install && bun run dev` starts with no env vars / API key.
+- [x] Edit Mermaid → live SVG updates (≤300ms debounce).
+- [x] ≥3 CSS-variable themes switch without installing Mermaid.js.
+- [x] ≥4 presets load: flowchart, sequence, state, agentflow (village).
+- [x] `pele` is a dependency; Mermaid.js is not.
+- [x] `bun run typecheck`, `bun run build`, `bun test` pass.
+- [x] README: run steps, Pele vs Mermaid.js, theming, credits + links.
+- [x] This PLAN.md first commit; boxes ticked in a final commit.
+- [x] One PR with screenshot AND short video of the running UI.
+- [x] `git diff --name-only main...HEAD` only under `apps/pele-lab/`.
