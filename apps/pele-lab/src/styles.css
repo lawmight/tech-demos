@@ -1,0 +1,268 @@
+@property --pele-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fffcf0;
+}
+
+@property --pele-fg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #100f0f;
+}
+
+@property --pele-surface {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f2f0e5;
+}
+
+@property --pele-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #cecdc3;
+}
+
+:root {
+  color-scheme: light;
+  --paper: #efeae1;
+  --ink: #1c1915;
+  --ink-soft: #5c564c;
+  --line: #ddd6c8;
+  --ember: #b8421a;
+  --well: #221e1a;
+  --well-text: #f3ecdf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding: 28px 28px 18px;
+}
+
+.kicker {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ember);
+}
+
+h1 {
+  margin: 4px 0 0;
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.rules {
+  margin: 0;
+  max-width: 46ch;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  text-align: right;
+}
+
+.rules a {
+  color: var(--ink);
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(340px, 1.25fr);
+  gap: 20px;
+  padding: 0 28px 28px;
+  min-height: calc(100dvh - 118px);
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.pane-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  margin-bottom: 10px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1;
+  padding: 8px 12px;
+  min-height: 36px;
+  border-radius: 999px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 120ms ease-out,
+    background-color 120ms ease-out,
+    color 120ms ease-out,
+    border-color 120ms ease-out;
+}
+
+.chip:hover {
+  border-color: #c4baa8;
+}
+
+.chip:active {
+  transform: scale(0.97);
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.chip:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}
+
+textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 420px;
+  resize: none;
+  border: 1px solid #3a342e;
+  border-radius: 16px;
+  padding: 18px 18px 20px;
+  background: var(--well);
+  color: var(--well-text);
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  caret-color: #e7a08a;
+}
+
+.hint {
+  margin: 8px 2px 0;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.error {
+  margin: 0 0 8px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #8d2412;
+}
+
+.error:empty {
+  display: none;
+}
+
+.stage.pele {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-height: 480px;
+  overflow: auto;
+  padding: 28px 20px;
+  border-radius: 16px;
+  background: var(--pele-bg);
+  color: var(--pele-fg);
+  border: 1px solid var(--pele-border);
+  transition:
+    --pele-bg 180ms ease-out,
+    --pele-fg 180ms ease-out,
+    --pele-surface 180ms ease-out,
+    --pele-border 180ms ease-out;
+}
+
+.stage.pele svg {
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 860px) {
+  .top {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 16px 12px;
+  }
+
+  .rules {
+    text-align: left;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    padding: 0 16px 20px;
+    min-height: 0;
+  }
+
+  textarea {
+    min-height: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip,
+  .stage.pele {
+    transition: none;
+  }
+}
